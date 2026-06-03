@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact — Prischa Bajeli</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+<style>
+  .contact-page { display: flex; flex-direction: column; justify-content: center; min-height: 70vh; text-align: center; }
+  .contact-page .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 28px;
+  }
+  .contact-page h1 {
+    font-family: var(--display);
+    font-weight: 300;
+    font-size: clamp(40px, 7vw, 84px);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin-bottom: 36px;
+  }
+  .contact-page h1 em { font-style: italic; color: var(--accent); }
+  .contact-mail {
+    font-family: var(--display);
+    font-size: clamp(22px, 3vw, 32px);
+    border-bottom: 1px solid var(--accent-soft);
+    padding-bottom: 4px;
+    transition: color 0.25s;
+    display: inline-block;
+  }
+  .contact-mail:hover { color: var(--accent); }
+  .contact-intro {
+    font-size: 19px;
+    color: var(--ink-soft);
+    max-width: 44ch;
+    margin: 0 auto 32px;
+  }
+  .resume-btn {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    color: var(--bg);
+    background: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 100px;
+    padding: 13px 30px;
+    transition: background 0.25s, color 0.25s;
+  }
+  .resume-btn:hover { background: var(--ink); border-color: var(--ink); }
+  .contact-rows { margin-top: 56px; display: flex; flex-direction: column; gap: 0; max-width: 520px; margin-left: auto; margin-right: auto; width: 100%; border-top: 1px solid var(--line); }
+  .contact-rows a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 4px;
+    border-bottom: 1px solid var(--line);
+    font-family: var(--mono);
+    font-size: 14px;
+    transition: padding 0.25s, color 0.25s;
+  }
+  .contact-rows a:hover { color: var(--accent); padding-left: 14px; padding-right: 14px; }
+  .contact-rows .addr-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 4px;
+    border-bottom: 1px solid var(--line);
+    font-family: var(--mono);
+    font-size: 14px;
+  }
+  .contact-rows .label { color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.1em; font-size: 12px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Prischa Bajeli</a>
+  <div class="links">
+    <a href="about.html">About</a>
+    <a href="work.html">Work</a>
+    <a href="research.html">Research</a>
+    <a href="beyond.html">Beyond</a>
+    <a href="contact.html" class="active">Contact</a>
+  </div>
+</nav>
+
+<main>
+  <div class="page">
+    <div class="wrap">
+      <div class="contact-page fade-in d1">
+        <div class="eyebrow">Get in touch</div>
+        <h1>Let's <em>connect</em>.</h1>
+        <p class="contact-intro">Open to internships and collaborations in machine learning, data, and software. The fastest way to reach me is email — or grab my résumé below.</p>
+        <a class="resume-btn" href="resume.pdf" download>Download résumé ↓</a>
+
+        <div class="contact-rows">
+          <a href="mailto:prischabajeli2k5@gmail.com"><span class="label">Email</span><span>prischabajeli2k5@gmail.com</span></a>
+          <a href="tel:+919702645637"><span class="label">Phone (India)</span><span>+91 97026 45637</span></a>
+          <a href="tel:+96895260323"><span class="label">Phone (Oman)</span><span>+968 95260323</span></a>
+          <a href="https://linkedin.com/in/prischa-bajeli" target="_blank" rel="noopener"><span class="label">LinkedIn</span><span>in/prischa-bajeli →</span></a>
+          <a href="https://github.com/prischab" target="_blank" rel="noopener"><span class="label">GitHub</span><span>@prischab →</span></a>
+          <div class="addr-row"><span class="label">Based in</span><span>Pune, Maharashtra, India &nbsp;·&nbsp; Muscat, Oman</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="copy">© 2026 Prischa Bajeli · Pune, India</div>
+    <div class="foot-links">
+      <a href="https://github.com/prischab" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/prischa-bajeli" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="index.html">Home</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

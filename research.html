@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Research — Prischa Bajeli</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+<style>
+  .pub-card {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 40px;
+    background: var(--bg-warm);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 40px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .pub-card:hover { transform: translateY(-4px); box-shadow: 0 24px 50px -28px rgba(60,40,20,0.45); }
+  @media (max-width: 760px) { .pub-card { grid-template-columns: 1fr; } }
+
+  /* paper preview box */
+  .pub-preview {
+    position: relative;
+    background: #fff;
+    border-right: 1px solid var(--line);
+    min-height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  @media (max-width: 760px) { .pub-preview { border-right: none; border-bottom: 1px solid var(--line); min-height: 220px; } }
+  .pub-preview img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  /* fallback mock "paper page" look when no image yet */
+  .paper-mock {
+    width: 78%;
+    aspect-ratio: 3/4;
+    background: #fff;
+    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.18);
+    border: 1px solid #eee;
+    padding: 22px 18px;
+    transform: rotate(-2deg);
+    font-family: var(--mono);
+    overflow: hidden;
+  }
+  .paper-mock .pm-venue { font-size: 8px; letter-spacing: 0.15em; color: var(--accent); text-transform: uppercase; margin-bottom: 10px; }
+  .paper-mock .pm-title { font-family: var(--display); font-size: 13px; line-height: 1.25; color: var(--ink); margin-bottom: 12px; }
+  .paper-mock .pm-line { height: 4px; background: #e8e4da; border-radius: 2px; margin-bottom: 6px; }
+  .paper-mock .pm-line.short { width: 60%; }
+  .paper-mock .pm-cols { display: flex; gap: 8px; margin-top: 12px; }
+  .paper-mock .pm-cols > div { flex: 1; }
+  .pub-preview .tag {
+    position: absolute;
+    top: 14px; left: 14px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--accent);
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 100px;
+  }
+
+  .pub-body { padding: 34px 38px 34px 0; display: flex; flex-direction: column; }
+  @media (max-width: 760px) { .pub-body { padding: 28px 24px; } }
+  .pub-body .year { font-family: var(--mono); font-size: 13px; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 12px; }
+  .pub-body h3 { font-family: var(--display); font-weight: 400; font-size: 26px; line-height: 1.25; margin-bottom: 14px; }
+  .pub-body .venue { font-style: italic; color: var(--ink-faint); margin-bottom: 16px; }
+  .pub-body p { color: var(--ink-soft); font-size: 18px; margin-bottom: 24px; }
+  .pub-actions { margin-top: auto; display: flex; gap: 16px; flex-wrap: wrap; }
+  .pub-actions a {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    padding: 11px 22px;
+    border-radius: 100px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    transition: background 0.25s, color 0.25s;
+  }
+  .pub-actions a.solid { background: var(--accent); color: #fff; }
+  .pub-actions a:hover { background: var(--accent); color: #fff; }
+  .pub-actions a.solid:hover { background: var(--ink); border-color: var(--ink); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Prischa Bajeli</a>
+  <div class="links">
+    <a href="about.html">About</a>
+    <a href="work.html">Work</a>
+    <a href="research.html" class="active">Research</a>
+    <a href="beyond.html">Beyond</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<main>
+  <div class="page">
+    <div class="wrap">
+      <div class="page-head fade-in d1">
+        <span class="num">03 / Research</span>
+        <h1>Publications</h1>
+        <p class="sub">Two peer-reviewed papers across IEEE and Springer venues. Click through to read the full work.</p>
+      </div>
+
+      <div class="fade-in d2">
+
+        <!-- Publication 1 -->
+        <div class="pub-card">
+          <div class="pub-preview">
+            <span class="tag">IEEE</span>
+            <!-- To show a real preview: drop an image at images/paper-face.jpg,
+                 delete the .paper-mock block below, and uncomment the img line -->
+            <!-- <img src="images/paper-face.jpg" alt="Paper preview"> -->
+            <div class="paper-mock">
+              <div class="pm-venue">IEEE ETCOM 2025</div>
+              <div class="pm-title">IoT-Enabled Face Recognition Attendance System</div>
+              <div class="pm-line"></div>
+              <div class="pm-line"></div>
+              <div class="pm-line short"></div>
+              <div class="pm-cols">
+                <div><div class="pm-line"></div><div class="pm-line"></div><div class="pm-line short"></div></div>
+                <div><div class="pm-line"></div><div class="pm-line"></div><div class="pm-line short"></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="pub-body">
+            <div class="year">2025</div>
+            <h3>IoT-Enabled Face Recognition Attendance System</h3>
+            <div class="venue">IEEE ETCOM 2025</div>
+            <p>An LBPH face recognition system deployed on a Raspberry Pi 4 to automate attendance for 50+ students at 95%+ accuracy, eliminating manual entry entirely.</p>
+            <div class="pub-actions">
+              <a class="solid" href="https://ieeexplore.ieee.org/document/11436752" target="_blank" rel="noopener">Read paper →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Publication 2 -->
+        <div class="pub-card">
+          <div class="pub-preview">
+            <span class="tag">Springer</span>
+            <!-- <img src="images/paper-energy.jpg" alt="Paper preview"> -->
+            <div class="paper-mock">
+              <div class="pm-venue">Springer LNNS · ICTCS 2025</div>
+              <div class="pm-title">Multivariate Time-Series Energy Consumption Prediction</div>
+              <div class="pm-line"></div>
+              <div class="pm-line"></div>
+              <div class="pm-line short"></div>
+              <div class="pm-cols">
+                <div><div class="pm-line"></div><div class="pm-line"></div><div class="pm-line short"></div></div>
+                <div><div class="pm-line"></div><div class="pm-line"></div><div class="pm-line short"></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="pub-body">
+            <div class="year">2025</div>
+            <h3>Multivariate Time-Series Energy Consumption Prediction</h3>
+            <div class="venue">Springer LNNS · ICTCS 2025, Jaipur, India</div>
+            <p>An RFE-LSTM forecasting pipeline over 35K hourly samples, with an ablation study identifying lag features as key signals — reducing MAE/RMSE by up to 7%.</p>
+            <div class="pub-actions">
+              <!-- Replace with your paper's exact SpringerLink URL once available -->
+              <a class="solid" href="https://link.springer.com/chapter/10.1007/978-3-032-20606-0_49" target="_blank" rel="noopener">Read paper →</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="copy">© 2026 Prischa Bajeli · Pune, India</div>
+    <div class="foot-links">
+      <a href="https://github.com/prischab" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/prischa-bajeli" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

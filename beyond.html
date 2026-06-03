@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Beyond — Prischa Bajeli</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+<style>
+  .dhvani-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: center; }
+  @media (max-width: 760px) { .dhvani-grid { grid-template-columns: 1fr; gap: 40px; } }
+  .badge {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(156,90,60,0.08);
+    padding: 5px 14px;
+    border-radius: 100px;
+    margin-bottom: 22px;
+  }
+  .dhvani-grid p { color: var(--ink-soft); margin-bottom: 20px; font-size: 21px; }
+  .dhvani-media .img-slot { aspect-ratio: 4/5; box-shadow: 0 24px 50px -26px rgba(60,40,20,0.4); }
+
+  .awards { margin-top: 70px; }
+  .awards h2 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 28px;
+    margin-bottom: 28px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  .award-row {
+    display: grid;
+    grid-template-columns: 120px 1fr auto;
+    gap: 24px;
+    align-items: baseline;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--line);
+    transition: padding-left 0.3s;
+  }
+  .award-row:hover { padding-left: 10px; }
+  @media (max-width: 640px) { .award-row { grid-template-columns: 1fr; gap: 4px; } }
+  .award-row .yr { font-family: var(--mono); font-size: 13px; color: var(--accent); }
+  .award-row .name { font-family: var(--display); font-size: 21px; }
+  .award-row .place { font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Prischa Bajeli</a>
+  <div class="links">
+    <a href="about.html">About</a>
+    <a href="work.html">Work</a>
+    <a href="research.html">Research</a>
+    <a href="beyond.html" class="active">Beyond</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<main>
+  <div class="page">
+    <div class="wrap">
+      <div class="page-head fade-in d1">
+        <span class="num">04 / Beyond</span>
+        <h1>Beyond the <em>code</em></h1>
+      </div>
+
+      <div class="dhvani-grid fade-in d2">
+        <div>
+          <span class="badge">Dhvani · Music Club</span>
+          <p>Away from the terminal, I'm a member of <strong>Dhvani</strong>, my university's music club (2024–Present) — where I sing, collaborate, and compete alongside a brilliant group of musicians.</p>
+          <p>Music keeps me curious and disciplined in a completely different way than research does. Representing Dhvani on stage has taught me as much about teamwork and composure as any lab has.</p>
+        </div>
+        <div class="dhvani-media">
+          <div class="img-slot">
+            <img src="images/dhvani.jpg" alt="Performing with Dhvani">
+          </div>
+        </div>
+      </div>
+
+      <!-- COMPETITIONS & ACHIEVEMENTS -->
+      <div class="awards fade-in d3">
+        <h2>Competitions &amp; achievements</h2>
+        <div class="award-row">
+          <div class="yr">School</div>
+          <div class="name">CBSE Cluster Championship — Volleyball</div>
+          <div class="place">1st Place</div>
+        </div>
+        <div class="award-row">
+          <div class="yr">2024–Present</div>
+          <div class="name">Dhvani Music Club fests — Symbiosis, MIT Loni, MIT ADT, JSPM</div>
+          <div class="place">Competitor</div>
+        </div>
+        <div class="award-row">
+          <div class="yr">2024–Present</div>
+          <div class="name">Inter-college music competitions &amp; events</div>
+          <div class="place">Performer</div>
+        </div>
+      </div>
+
+      <!-- EVENTS & VOLUNTEERING -->
+      <div class="awards fade-in d3">
+        <h2>Events &amp; volunteering</h2>
+        <div class="award-row">
+          <div class="yr">2026</div>
+          <div class="name">National Sport Summit 2026</div>
+          <div class="place">Volunteer</div>
+        </div>
+        <div class="award-row">
+          <div class="yr">2025</div>
+          <div class="name">Hoop It Up 2025</div>
+          <div class="place">Volunteer</div>
+        </div>
+        <div class="award-row">
+          <div class="yr">2025</div>
+          <div class="name">NSRTC 2025 — National Scientific Roundtable Conference</div>
+          <div class="place">Volunteer</div>
+        </div>
+        <div class="award-row">
+          <div class="yr">2024</div>
+          <div class="name">R.I.D.E 2024 — engaged with startup founders &amp; innovators</div>
+          <div class="place">Participant</div>
+        </div>
+        <div class="award-row">
+          <div class="yr">2023</div>
+          <div class="name">SLDP 2023 — panels on sustainability &amp; social activism</div>
+          <div class="place">Attendee</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="copy">© 2026 Prischa Bajeli · Pune, India</div>
+    <div class="foot-links">
+      <a href="https://github.com/prischab" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/prischa-bajeli" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

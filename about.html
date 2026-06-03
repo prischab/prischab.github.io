@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About — Prischa Bajeli</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+<style>
+  .about-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 56px; align-items: start; }
+  @media (max-width: 820px) { .about-grid { grid-template-columns: 1fr; gap: 40px; } }
+  .about-grid p { font-size: 21px; color: var(--ink-soft); margin-bottom: 24px; }
+  .about-grid p:last-child { margin-bottom: 0; }
+  .about-grid .lead { font-size: 25px; color: var(--ink); }
+  .about-grid .lead em { font-style: italic; color: var(--accent); }
+
+  .facts { display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--line); }
+  .fact {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--line);
+    font-family: var(--mono);
+    font-size: 13px;
+  }
+  .fact span:first-child { color: var(--ink-faint); letter-spacing: 0.05em; text-transform: uppercase; }
+  .fact span:last-child { color: var(--ink); text-align: right; }
+
+  /* skills + education blocks */
+  .block { margin-top: 80px; }
+  .block-title {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 30px;
+    margin-bottom: 32px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  .skills-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 6px 48px; }
+  @media (max-width: 640px) { .skills-grid { grid-template-columns: 1fr; } }
+  .skill-row { padding: 16px 0; border-bottom: 1px solid var(--line); }
+  .skill-row .label {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .skill-row .items { font-size: 18px; color: var(--ink-soft); }
+
+  .edu-card { background: var(--bg-warm); border-radius: 4px; padding: 36px 40px; }
+  @media (max-width: 640px) { .edu-card { padding: 28px 24px; } }
+  .edu-card h3 { font-family: var(--display); font-weight: 400; font-size: 24px; margin-bottom: 6px; }
+  .edu-card .meta { font-family: var(--mono); font-size: 13px; color: var(--ink-faint); margin-bottom: 18px; }
+  .edu-card ul { list-style: none; }
+  .edu-card li { color: var(--ink-soft); padding: 6px 0 6px 22px; position: relative; }
+  .edu-card li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
+
+  .cert-list { border-top: 1px solid var(--line); }
+  .cert-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+    transition: padding-left 0.3s;
+  }
+  .cert-row:hover { padding-left: 10px; }
+  .cert-name { font-family: var(--display); font-size: 20px; color: var(--ink); }
+  .cert-org { font-family: var(--mono); font-size: 12px; color: var(--ink-faint); letter-spacing: 0.05em; white-space: nowrap; }
+  @media (max-width: 560px) {
+    .cert-row { flex-direction: column; gap: 4px; }
+    .cert-org { white-space: normal; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Prischa Bajeli</a>
+  <div class="links">
+    <a href="about.html" class="active">About</a>
+    <a href="work.html">Work</a>
+    <a href="research.html">Research</a>
+    <a href="beyond.html">Beyond</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<main>
+  <div class="page">
+    <div class="wrap">
+      <div class="page-head fade-in d1">
+        <span class="num">01 / About</span>
+        <h1>About <em>me</em></h1>
+      </div>
+
+      <div class="about-grid fade-in d2">
+        <div>
+          <p class="lead">I'm a third-year B.Tech student specializing in <em>Artificial Intelligence &amp; Data Science</em> at MIT World Peace University, Pune.</p>
+          <p>I was brought up in Muscat, Oman, where I spent my entire school life before moving to Pune for my bachelor's degree. That mix of growing up abroad and studying in India has shaped how I approach problems — with curiosity, adaptability, and an eye for how technology serves real people.</p>
+          <p>My work spans the full lifecycle of machine learning — from training models and engineering data pipelines to deploying them as usable applications. I've built everything from an embedding-based facial recognition system running on a Raspberry Pi to a FastAPI service that predicts chest X-ray diagnoses.</p>
+          <p>With two published research papers and a genuine love for technical writing, I care as much about communicating ideas clearly as I do about building them. I'm proficient across Python, PyTorch, Keras, SQL and scikit-learn — and always looking for the next problem worth solving.</p>
+        </div>
+        <div class="facts">
+          <div class="fact"><span>Focus</span><span>AI · Data Science · ML · DL</span></div>
+          <div class="fact"><span>University</span><span>MIT-WPU, Pune</span></div>
+          <div class="fact"><span>Degree</span><span>B.Tech CSE (AI&amp;DS)</span></div>
+          <div class="fact"><span>Graduating</span><span>2027</span></div>
+          <div class="fact"><span>CGPA</span><span>8.20</span></div>
+          <div class="fact"><span>Based in</span><span>Pune, India</span></div>
+        </div>
+      </div>
+
+      <!-- SKILLS -->
+      <div class="block fade-in d3">
+        <h2 class="block-title">Skills</h2>
+        <div class="skills-grid">
+          <div class="skill-row">
+            <div class="label">Languages</div>
+            <div class="items">Python · C · C++ · SQL</div>
+          </div>
+          <div class="skill-row">
+            <div class="label">ML &amp; AI</div>
+            <div class="items">PyTorch · Keras · TensorFlow · scikit-learn · LSTM · DenseNet121 · Computer Vision · NLP · Time-Series Forecasting</div>
+          </div>
+          <div class="skill-row">
+            <div class="label">Data &amp; Visualization</div>
+            <div class="items">pandas · NumPy · Matplotlib · Excel · IBM Cognos · Power BI</div>
+          </div>
+          <div class="skill-row">
+            <div class="label">Tools &amp; Platforms</div>
+            <div class="items">FastAPI · Flask · Git · GitHub · Jupyter · MySQL · Raspberry Pi · AutoCAD</div>
+          </div>
+          <div class="skill-row">
+            <div class="label">Creative</div>
+            <div class="items">Graphic Design · Presentation Design · Singing · Educational Content Creation</div>
+          </div>
+          <div class="skill-row">
+            <div class="label">Soft Skills</div>
+            <div class="items">Technical Writing · Research &amp; Experimentation · Leadership · Event Management · Communication</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LANGUAGES -->
+      <div class="block fade-in d3">
+        <h2 class="block-title">Languages</h2>
+        <div class="skills-grid">
+          <div class="skill-row">
+            <div class="label">Fluent</div>
+            <div class="items">English · Hindi</div>
+          </div>
+          <div class="skill-row">
+            <div class="label">Beginner</div>
+            <div class="items">French · Korean</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EDUCATION -->
+      <div class="block fade-in d3">
+        <h2 class="block-title">Education</h2>
+        <div class="edu-card">
+          <h3>B.Tech — Computer Science &amp; Engineering (AI &amp; Data Science)</h3>
+          <div class="meta">MIT World Peace University, Pune · 2023 – Present · CGPA 8.20</div>
+          <ul>
+            <li>Relevant coursework: DSA, DBMS, Data Engineering, Machine Learning, Deep Learning, Operating Systems, Theory of Computation, Cognitive Computing &amp; NLP, UI/UX</li>
+          </ul>
+        </div>
+        <div class="edu-card" style="margin-top:20px;">
+          <h3>Indian School Muscat</h3>
+          <div class="meta">Muscat, Oman · 2008 – 2023 · CBSE</div>
+          <ul>
+            <li>Class 12 (CBSE): 84%</li>
+            <li>Class 10 (CBSE): 94%</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- CERTIFICATIONS -->
+      <div class="block fade-in d3">
+        <h2 class="block-title">Certifications</h2>
+        <div class="cert-list">
+          <div class="cert-row">
+            <div class="cert-name">AI Fundamentals</div>
+            <div class="cert-org">IBM SkillsBuild · 2024</div>
+          </div>
+          <div class="cert-row">
+            <div class="cert-name">Data Visualization &amp; Building Dashboards with Excel and Cognos</div>
+            <div class="cert-org">edX · 2024</div>
+          </div>
+          <div class="cert-row">
+            <div class="cert-name">Introduction to Large Language Models</div>
+            <div class="cert-org">NPTEL · 2026</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="copy">© 2026 Prischa Bajeli · Pune, India</div>
+    <div class="foot-links">
+      <a href="https://github.com/prischab" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/prischa-bajeli" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

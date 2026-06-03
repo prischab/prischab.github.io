@@ -1,0 +1,164 @@
+:root {
+  --bg: #f7f5f0;
+  --bg-warm: #efece4;
+  --ink: #1a1a17;
+  --ink-soft: #4a4843;
+  --ink-faint: #8a877e;
+  --line: #d9d5c9;
+  --accent: #9c5a3c;
+  --accent-soft: #c08a6d;
+  --display: 'Fraunces', serif;
+  --body: 'Newsreader', serif;
+  --mono: 'IBM Plex Mono', monospace;
+  --maxw: 1120px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 19px;
+  line-height: 1.65;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; width: 100%; }
+a { color: inherit; text-decoration: none; }
+
+/* grain overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- NAV ---------- */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 32px;
+  background: rgba(247,245,240,0.82);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+nav .logo {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+nav .links { display: flex; gap: 28px; }
+nav .links a {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  transition: color 0.2s;
+  position: relative;
+}
+nav .links a:hover { color: var(--accent); }
+nav .links a.active { color: var(--accent); }
+nav .links a.active::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -6px;
+  height: 1px;
+  background: var(--accent);
+}
+@media (max-width: 720px) {
+  nav { padding: 16px 20px; }
+  nav .links { gap: 16px; flex-wrap: wrap; justify-content: flex-end; }
+  nav .links a { font-size: 11px; }
+}
+
+/* ---------- PAGE SHELL ---------- */
+main { flex: 1; position: relative; z-index: 2; }
+.page { padding: 80px 0 110px; }
+.page-head { margin-bottom: 64px; }
+.page-head .num {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  display: block;
+  margin-bottom: 16px;
+}
+.page-head h1 {
+  font-family: var(--display);
+  font-weight: 300;
+  font-size: clamp(40px, 7vw, 78px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.page-head h1 em { font-style: italic; color: var(--accent); }
+.page-head .sub {
+  font-size: 22px;
+  color: var(--ink-soft);
+  margin-top: 20px;
+  max-width: 50ch;
+}
+
+.fade-in { animation: fadeUp 0.8s ease forwards; opacity: 0; }
+.d1 { animation-delay: 0.05s; }
+.d2 { animation-delay: 0.15s; }
+.d3 { animation-delay: 0.25s; }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- IMAGE SLOT ---------- */
+.img-slot {
+  background: linear-gradient(135deg, var(--bg-warm), #e3ddd0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-faint);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-align: center;
+  line-height: 1.6;
+  padding: 16px;
+  border-radius: 2px;
+}
+.img-slot img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 2px; }
+.img-slot img.fit-contain { object-fit: contain; }
+
+/* ---------- FOOTER ---------- */
+footer {
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid var(--line);
+  padding: 40px 0;
+}
+footer .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+footer .copy { font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.08em; }
+footer .foot-links { display: flex; gap: 22px; }
+footer .foot-links a {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  transition: color 0.2s;
+}
+footer .foot-links a:hover { color: var(--accent); }

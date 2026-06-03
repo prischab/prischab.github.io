@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Prischa Bajeli — AI &amp; Data Science</title>
+<meta name="description" content="Prischa Bajeli — Third-year B.Tech student in Artificial Intelligence & Data Science." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+<style>
+  /* homepage-specific: full-height hero, no footer line needed */
+  body { background: var(--bg); }
+  .home-nav {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    background: transparent;
+    border-bottom: none;
+    backdrop-filter: none;
+  }
+  header.hero {
+    flex: 1;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 100px 0 60px;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 64px;
+    align-items: center;
+    width: 100%;
+  }
+  @media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 28px;
+  }
+  h1.name {
+    font-family: var(--display);
+    font-weight: 300;
+    font-size: clamp(56px, 10vw, 124px);
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+    margin-bottom: 30px;
+  }
+  h1.name em { font-style: italic; color: var(--accent); }
+  .tagline {
+    font-size: 23px;
+    color: var(--ink-soft);
+    max-width: 32ch;
+    margin-bottom: 40px;
+  }
+  .hero-cta { display: flex; gap: 22px; align-items: center; flex-wrap: wrap; }
+  .hero-cta a {
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    padding-bottom: 3px;
+    border-bottom: 1px solid var(--line);
+    transition: border-color 0.25s, color 0.25s;
+  }
+  .hero-cta a:hover { color: var(--accent); border-color: var(--accent); }
+  .hero-cta .primary {
+    border: 1px solid var(--accent);
+    border-radius: 100px;
+    padding: 12px 26px;
+    color: var(--accent);
+  }
+  .hero-cta .primary:hover { background: var(--accent); color: var(--bg); }
+
+  .photo-frame { position: relative; }
+  .photo-frame .img-slot {
+    aspect-ratio: 4/5;
+    box-shadow: 0 30px 60px -20px rgba(60,40,20,0.35);
+  }
+  .photo-frame::after {
+    content: "";
+    position: absolute;
+    inset: 16px -16px -16px 16px;
+    border: 1px solid var(--accent-soft);
+    border-radius: 2px;
+    z-index: -1;
+  }
+</style>
+</head>
+<body>
+
+<nav class="home-nav">
+  <a href="index.html" class="logo">Prischa Bajeli</a>
+  <div class="links">
+    <a href="about.html">About</a>
+    <a href="work.html">Work</a>
+    <a href="research.html">Research</a>
+    <a href="beyond.html">Beyond</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="fade-in d1">
+        <div class="eyebrow">AI &amp; Data Science · Class of 2027</div>
+        <h1 class="name">Prischa<br><em>Bajeli</em></h1>
+        <p class="tagline">Third-year B.Tech student building machine learning systems that reach from research papers to real deployments.</p>
+        <div class="hero-cta">
+          <a href="about.html" class="primary">About me →</a>
+        </div>
+      </div>
+      <div class="photo-frame fade-in d2">
+        <div class="img-slot">
+          <img src="images/profile.jpg" alt="Prischa Bajeli">
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+</body>
+</html>
