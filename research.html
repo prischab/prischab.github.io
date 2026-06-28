@@ -35,7 +35,7 @@
     overflow: hidden;
   }
   @media (max-width: 760px) { .pub-preview { border-right: none; border-bottom: 1px solid var(--line); min-height: 220px; } }
-  .pub-preview img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .pub-preview img { width: 100%; height: 100%; object-fit: contain; display: block; }
   /* fallback mock "paper page" look when no image yet */
   .paper-mock {
     width: 78%;
@@ -117,20 +117,7 @@
         <div class="pub-card">
           <div class="pub-preview">
             <span class="tag">IEEE</span>
-            <!-- To show a real preview: drop an image at images/paper-face.jpg,
-                 delete the .paper-mock block below, and uncomment the img line -->
-            <!-- <img src="images/paper-face.jpg" alt="Paper preview"> -->
-            <div class="paper-mock">
-              <div class="pm-venue">IEEE ETCOM 2025</div>
-              <div class="pm-title">IoT-Enabled Face Recognition Attendance System</div>
-              <div class="pm-line"></div>
-              <div class="pm-line"></div>
-              <div class="pm-line short"></div>
-              <div class="pm-cols">
-                <div><div class="pm-line"></div><div class="pm-line"></div><div class="pm-line short"></div></div>
-                <div><div class="pm-line"></div><div class="pm-line"></div><div class="pm-line short"></div></div>
-              </div>
-            </div>
+            <img src="images/paper-face.png" alt="IoT-Enabled Face Recognition Attendance System — IEEE ETCOM 2025">
           </div>
           <div class="pub-body">
             <div class="year">2025</div>
@@ -147,18 +134,7 @@
         <div class="pub-card">
           <div class="pub-preview">
             <span class="tag">Springer</span>
-            <!-- <img src="images/paper-energy.jpg" alt="Paper preview"> -->
-            <div class="paper-mock">
-              <div class="pm-venue">Springer LNNS · ICTCS 2025</div>
-              <div class="pm-title">Multivariate Time-Series Energy Consumption Prediction</div>
-              <div class="pm-line"></div>
-              <div class="pm-line"></div>
-              <div class="pm-line short"></div>
-              <div class="pm-cols">
-                <div><div class="pm-line"></div><div class="pm-line"></div><div class="pm-line short"></div></div>
-                <div><div class="pm-line"></div><div class="pm-line"></div><div class="pm-line short"></div></div>
-              </div>
-            </div>
+            <img src="images/project-energy.png" alt="Multivariate Time-Series Energy Consumption Prediction — Springer LNNS ICTCS 2025">
           </div>
           <div class="pub-body">
             <div class="year">2025</div>

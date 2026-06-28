@@ -76,12 +76,12 @@
       <div class="page-head fade-in d1">
         <span class="num">02 / Work</span>
         <h1>Work</h1>
-        <p class="sub">Projects spanning machine learning, IoT, deep learning, and full-stack development — from research papers to deployed applications.</p>
+        <p class="sub">Projects spanning agentic AI, machine learning, MLOps, RAG systems, IoT, and full-stack development — from research papers to deployed applications.</p>
       </div>
 
       <div class="fade-in d2">
 
-        <!-- Project 1 -->
+        <!-- Project 1 — IoT Face Recognition (IEEE published, real hardware) -->
         <div class="project">
           <div class="proj-media">
             <div class="img-slot">
@@ -102,7 +102,7 @@
           </div>
         </div>
 
-        <!-- Project 2 -->
+        <!-- Project 2 — Energy Prediction (Springer published, LSTM + RFE) -->
         <div class="project">
           <div class="proj-media">
             <div class="img-slot">
@@ -123,7 +123,27 @@
           </div>
         </div>
 
-        <!-- Project 3 -->
+        <!-- Project 3 — Siora2k5 (agentic AI, live demo, built two ways) -->
+        <div class="project">
+          <div class="proj-media">
+            <div class="img-slot">
+              <img class="fit-contain" src="images/project-siora.png" alt="Siora2k5 agentic AI research assistant">
+            </div>
+          </div>
+          <div class="proj-body">
+            <div class="proj-num">Project 03</div>
+            <span class="badge">Agentic AI · Live Demo</span>
+            <h3>Siora2k5 — Agentic AI Research Assistant</h3>
+            <div class="proj-stack">Python · Claude API · LangGraph · FastAPI · Next.js · Tavily · ChromaDB</div>
+            <p>An AI agent that autonomously selects and chains tools — web search, calculator, document RAG, and image vision — to answer multi-step questions. Built two ways: from scratch (to understand the agentic loop mechanics) and with LangGraph (for the production pattern). Achieves 100% tool-selection accuracy on the evaluation harness. FastAPI backend deployed on Render, Next.js chat UI on Vercel.</p>
+            <div class="proj-links">
+              <a href="https://github.com/prischab/Research-agent-Siora2k5" target="_blank" rel="noopener">GitHub →</a>
+              <a href="https://research-agent-siora2k5.vercel.app" target="_blank" rel="noopener">Live demo →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4 — ExplainAI (medical DL, 112K images, Grad-CAM, 0.83 AUC) -->
         <div class="project">
           <div class="proj-media">
             <div class="img-slot">
@@ -131,7 +151,7 @@
             </div>
           </div>
           <div class="proj-body">
-            <div class="proj-num">Project 03</div>
+            <div class="proj-num">Project 04</div>
             <span class="badge">Deep Learning · XAI</span>
             <h3>Explainable AI for Chest X-Ray Diagnosis</h3>
             <div class="proj-stack">Python · PyTorch · DenseNet121 · FastAPI · Grad-CAM · NumPy</div>
@@ -142,7 +162,83 @@
           </div>
         </div>
 
-        <!-- Project 4 -->
+        <!-- Project 5 — MedGuide RAG (grounded citations, refuses to hallucinate) -->
+        <div class="project">
+          <div class="proj-media">
+            <div class="img-slot">
+              <img class="fit-contain" src="images/project-medguide.png" alt="MedGuide clinical guideline RAG assistant">
+            </div>
+          </div>
+          <div class="proj-body">
+            <div class="proj-num">Project 05</div>
+            <span class="badge">RAG · NLP</span>
+            <h3>MedGuide — Clinical Guideline RAG Assistant</h3>
+            <div class="proj-stack">Python · ChromaDB · sentence-transformers · FastAPI · Claude API</div>
+            <p>A retrieval-augmented generation system that answers clinical questions grounded in WHO guideline PDFs. Retrieves the most relevant passages via vector search, then instructs the LLM to answer only from those sources — with inline citations (document + page number). When the corpus doesn't cover a question, it says so rather than guessing.</p>
+            <div class="proj-links">
+              <a href="https://github.com/prischab/medguide-rag" target="_blank" rel="noopener">GitHub →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 6 — Archive 2k5 (full-stack e-commerce, custom payment flow) -->
+        <div class="project">
+          <div class="proj-media">
+            <div class="img-slot">
+              <img class="fit-contain" src="images/project-archive.png" alt="Archive 2k5 thrift store with UPI QR checkout">
+            </div>
+          </div>
+          <div class="proj-body">
+            <div class="proj-num">Project 06</div>
+            <span class="badge">Full-Stack · E-Commerce</span>
+            <h3>Archive 2k5 — Thrift Store with UPI QR Checkout</h3>
+            <div class="proj-stack">Next.js · Prisma · SQLite · PostgreSQL · Clerk · TypeScript</div>
+            <p>A full-stack thrift store template with an admin dashboard and a custom UPI QR checkout flow: items are reserved on checkout, buyers pay via any UPI app, and the admin confirms receipt — zero payment gateway fees. A complete Razorpay integration is built in but dormant; switching to automated payment verification requires one environment variable change.</p>
+            <div class="proj-links">
+              <a href="https://github.com/prischab/Archive-2k5" target="_blank" rel="noopener">GitHub →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 7 — Credit Risk Analysis (150K borrowers, ROC-AUC 0.84) -->
+        <div class="project">
+          <div class="proj-media">
+            <div class="img-slot">
+              <img class="fit-contain" src="images/project-credit.png" alt="Credit risk analysis predicting loan default">
+            </div>
+          </div>
+          <div class="proj-body">
+            <div class="proj-num">Project 07</div>
+            <span class="badge">Data Science · ML</span>
+            <h3>Credit Risk Analysis — Predicting Loan Default</h3>
+            <div class="proj-stack">Python · scikit-learn · pandas · NumPy · Logistic Regression · Random Forest · matplotlib · seaborn</div>
+            <p>End-to-end credit risk analysis on 150,000 borrowers from the "Give Me Some Credit" dataset. Rigorous EDA on a highly imbalanced target (6.7% default rate), followed by a head-to-head model comparison using ROC-AUC (0.84), precision, and recall. Key finding: credit utilization is the top default driver — but only a non-linear model (Random Forest, feature importance 0.27) reveals it; its linear correlation with the target is near zero.</p>
+            <div class="proj-links">
+              <a href="https://github.com/prischab/credit-risk-analysis" target="_blank" rel="noopener">GitHub →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 8 — Heart Disease MLOps (Docker + CI/CD + FastAPI) -->
+        <div class="project">
+          <div class="proj-media">
+            <div class="img-slot">
+              <img class="fit-contain" src="images/project-mlops.png" alt="Heart disease predictor MLOps pipeline">
+            </div>
+          </div>
+          <div class="proj-body">
+            <div class="proj-num">Project 08</div>
+            <span class="badge">MLOps · CI/CD</span>
+            <h3>Heart Disease Predictor — End-to-End MLOps Pipeline</h3>
+            <div class="proj-stack">Python · FastAPI · Docker · GitHub Actions · scikit-learn · pytest</div>
+            <p>A production ML engineering demo: a RandomForest classifier trained on the UCI Heart Disease dataset, served through a REST API, containerized with Docker, and automatically tested and rebuilt on every push via GitHub Actions CI/CD. The model is intentionally simple — the focus is the reproducible, portable infrastructure around it.</p>
+            <div class="proj-links">
+              <a href="https://github.com/prischab/heart-disease-mlops" target="_blank" rel="noopener">GitHub →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 9 — JobAI (live AI mobile app) -->
         <div class="project">
           <div class="proj-media">
             <div class="img-slot">
@@ -150,7 +246,7 @@
             </div>
           </div>
           <div class="proj-body">
-            <div class="proj-num">Project 04</div>
+            <div class="proj-num">Project 09</div>
             <span class="badge">AI · Mobile App · Career Tech</span>
             <h3>JobAI — Your AI Career Copilot</h3>
             <div class="proj-stack">React Native · Expo · TypeScript · Express 5 · Anthropic Claude · PostgreSQL · Drizzle ORM · pnpm</div>
@@ -162,7 +258,7 @@
           </div>
         </div>
 
-        <!-- Project 5 -->
+        <!-- Project 10 — Educational Math Game -->
         <div class="project">
           <div class="proj-media">
             <div class="img-slot">
@@ -170,10 +266,10 @@
             </div>
           </div>
           <div class="proj-body">
-            <div class="proj-num">Project 05</div>
+            <div class="proj-num">Project 10</div>
             <span class="badge">UX · Education</span>
             <h3>Educational Math Game for Children (Ages 5–10)</h3>
-            <div class="proj-stack">Web · UI/UX · Interactive Design</div>
+            <div class="proj-stack">Next.js · React · TypeScript · CSS</div>
             <p>An interactive math learning site with musical feedback designed to improve engagement and retention for young learners. Built around UX principles, with documented purpose, novelty, user flow, and feature sequencing.</p>
             <div class="proj-links">
               <a href="https://github.com/prischab/educational-math-website" target="_blank" rel="noopener">GitHub →</a>
@@ -181,14 +277,28 @@
           </div>
         </div>
 
-        <!-- Project 6 -->
+        <!-- Project 11 — University Club Dashboard -->
         <div class="project text-only">
           <div class="proj-body">
-            <div class="proj-num">Project 06</div>
+            <div class="proj-num">Project 11</div>
             <span class="badge">Full-Stack · Database</span>
             <h3>University Club Dashboard — Multi-Club Management System</h3>
             <div class="proj-stack">Web technologies · MySQL · Flask · Relational DB</div>
             <p>A database-linked admin dashboard that centralizes management of multiple university clubs — Acting, Music, Coding, and Robotics. Provides unified views for club details, budgets, activities, and competitions through a single interface for administrators.</p>
+          </div>
+        </div>
+
+        <!-- Project 12 — Primetrade (market sentiment analysis) -->
+        <div class="project text-only">
+          <div class="proj-body">
+            <div class="proj-num">Project 12</div>
+            <span class="badge">Data Science · Market Analysis</span>
+            <h3>Trader Performance vs Market Sentiment — Primetrade Assignment</h3>
+            <div class="proj-stack">Python · pandas · NumPy · matplotlib · seaborn · scipy</div>
+            <p>Analysis of whether Bitcoin market sentiment (Fear &amp; Greed Index) predicts trader performance on Hyperliquid (~211K trades). Key finding: per-trade PnL does not differ significantly between Fear and Greed regimes (Welch p=0.69, Mann-Whitney p=0.53). The real signal is behavioural — average position size during Fear (~$7,180) is 57% larger than during Greed (~$4,570).</p>
+            <div class="proj-links">
+              <a href="https://github.com/prischab/Primetrade-ds-assignment" target="_blank" rel="noopener">GitHub →</a>
+            </div>
           </div>
         </div>
 
