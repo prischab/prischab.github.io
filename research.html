@@ -6,22 +6,21 @@
 <title>Research — Prischa Bajeli</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400..800&amp;family=Space+Grotesk:wght@400..600&amp;display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="style.css" />
 <style>
   .pub-card {
     display: grid;
-    grid-template-columns: 300px 1fr;
+    grid-template-columns: 320px 1fr;
     gap: 40px;
-    background: var(--bg-warm);
+    background: var(--bg-alt);
     border: 1px solid var(--line);
-    border-radius: 6px;
     overflow: hidden;
-    margin-bottom: 40px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 32px;
+    transition: border-color 0.3s;
   }
-  .pub-card:hover { transform: translateY(-4px); box-shadow: 0 24px 50px -28px rgba(60,40,20,0.45); }
-  @media (max-width: 760px) { .pub-card { grid-template-columns: 1fr; } }
+  .pub-card:hover { border-color: var(--ink); }
+  @media (max-width: 760px) { .pub-card { grid-template-columns: 1fr; gap: 0; } }
 
   /* paper preview box */
   .pub-preview {
@@ -41,64 +40,79 @@
     width: 78%;
     aspect-ratio: 3/4;
     background: #fff;
-    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.18);
     border: 1px solid #eee;
     padding: 22px 18px;
     transform: rotate(-2deg);
-    font-family: var(--mono);
     overflow: hidden;
   }
-  .paper-mock .pm-venue { font-size: 8px; letter-spacing: 0.15em; color: var(--accent); text-transform: uppercase; margin-bottom: 10px; }
+  .paper-mock .pm-venue { font-size: 8px; letter-spacing: 0.15em; color: var(--ink); text-transform: uppercase; margin-bottom: 10px; }
   .paper-mock .pm-title { font-family: var(--display); font-size: 13px; line-height: 1.25; color: var(--ink); margin-bottom: 12px; }
-  .paper-mock .pm-line { height: 4px; background: #e8e4da; border-radius: 2px; margin-bottom: 6px; }
+  .paper-mock .pm-line { height: 4px; background: var(--bg-warm); margin-bottom: 6px; }
   .paper-mock .pm-line.short { width: 60%; }
   .paper-mock .pm-cols { display: flex; gap: 8px; margin-top: 12px; }
   .paper-mock .pm-cols > div { flex: 1; }
   .pub-preview .tag {
     position: absolute;
-    top: 14px; left: 14px;
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.1em;
+    top: 0; left: 0;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    background: var(--accent);
-    color: #fff;
-    padding: 4px 10px;
-    border-radius: 100px;
+    background: var(--ink);
+    color: var(--bg);
+    padding: 6px 12px;
   }
 
   .pub-body { padding: 34px 38px 34px 0; display: flex; flex-direction: column; }
   @media (max-width: 760px) { .pub-body { padding: 28px 24px; } }
-  .pub-body .year { font-family: var(--mono); font-size: 13px; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 12px; }
-  .pub-body h3 { font-family: var(--display); font-weight: 400; font-size: 26px; line-height: 1.25; margin-bottom: 14px; }
-  .pub-body .venue { font-style: italic; color: var(--ink-faint); margin-bottom: 16px; }
-  .pub-body p { color: var(--ink-soft); font-size: 18px; margin-bottom: 24px; }
-  .pub-actions { margin-top: auto; display: flex; gap: 16px; flex-wrap: wrap; }
+  .pub-body .year { font-size: 12px; font-weight: 600; letter-spacing: 0.2em; margin-bottom: 12px; }
+  .pub-body h3 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 2.8vw, 34px); line-height: 1.04; letter-spacing: -0.045em; margin-bottom: 14px; }
+  .pub-body .venue { font-size: 12px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 16px; }
+  .pub-body p { color: var(--ink-soft); margin-bottom: 24px; }
+  .pub-actions { margin-top: auto; display: flex; gap: 12px; flex-wrap: wrap; }
   .pub-actions a {
-    font-family: var(--mono);
     font-size: 12px;
-    letter-spacing: 0.05em;
-    padding: 11px 22px;
-    border-radius: 100px;
-    border: 1px solid var(--accent);
-    color: var(--accent);
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 11px 20px;
+    border: 1px solid var(--ink);
+    color: var(--ink);
     transition: background 0.25s, color 0.25s;
   }
-  .pub-actions a.solid { background: var(--accent); color: #fff; }
-  .pub-actions a:hover { background: var(--accent); color: #fff; }
-  .pub-actions a.solid:hover { background: var(--ink); border-color: var(--ink); }
+  .pub-actions a.solid { background: var(--ink); color: var(--bg); }
+  .pub-actions a:hover { background: var(--ink); color: var(--bg); }
+  .pub-actions a.solid:hover { background: transparent; color: var(--ink); }
 </style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="logo">Prischa Bajeli</a>
-  <div class="links">
-    <a href="about.html">About</a>
-    <a href="work.html">Work</a>
-    <a href="research.html" class="active">Research</a>
-    <a href="beyond.html">Beyond</a>
-    <a href="contact.html">Contact</a>
+<header class="topbar">
+  <a href="index.html" class="logo" aria-label="Prischa Bajeli, home">prischa.</a>
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>Open to internships</span>
+      <span>2 peer-reviewed papers · IEEE &amp; Springer</span>
+      <span>AI &amp; Data Science · Class of 2027</span>
+    </div>
+  </div>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu"><span></span><span></span></button>
+</header>
+<div class="menu-backdrop"></div>
+<nav class="menu" id="menu" aria-label="Main">
+  <button class="menu-close" type="button" aria-label="Close menu"><span></span><span></span></button>
+  <ul class="menu-links">
+    <li><a href="about.html"><span class="n">01</span><span class="w">about</span></a></li>
+    <li><a href="experience.html"><span class="n">02</span><span class="w">experience</span></a></li>
+    <li><a href="work.html"><span class="n">03</span><span class="w">projects</span></a></li>
+    <li><a href="research.html"><span class="n">04</span><span class="w">research</span></a></li>
+    <li><a href="beyond.html"><span class="n">05</span><span class="w">beyond</span></a></li>
+    <li><a href="contact.html"><span class="n">06</span><span class="w">contact</span></a></li>
+  </ul>
+  <div class="menu-social">
+    <a href="https://github.com/prischab" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://linkedin.com/in/prischa-bajeli" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="resume.pdf" target="_blank" rel="noopener">Résumé</a>
   </div>
 </nav>
 
@@ -106,7 +120,7 @@
   <div class="page">
     <div class="wrap">
       <div class="page-head fade-in d1">
-        <span class="num">03 / Research</span>
+        <span class="num">04 / Research</span>
         <h1>Publications</h1>
         <p class="sub">Two peer-reviewed papers across IEEE and Springer venues. Click through to read the full work.</p>
       </div>
@@ -164,5 +178,6 @@
   </div>
 </footer>
 
+<script src="site.js"></script>
 </body>
 </html>

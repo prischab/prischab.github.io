@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Work — Prischa Bajeli</title>
+<title>Projects — Prischa Bajeli</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400..800&amp;family=Space+Grotesk:wght@400..600&amp;display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="style.css" />
 <style>
   .project {
@@ -14,8 +14,8 @@
     grid-template-columns: 0.9fr 1.1fr;
     gap: 48px;
     align-items: center;
-    margin-bottom: 80px;
-    padding-bottom: 80px;
+    margin-bottom: 72px;
+    padding-bottom: 72px;
     border-bottom: 1px solid var(--line);
   }
   .project:last-child { border-bottom: none; margin-bottom: 0; }
@@ -29,44 +29,170 @@
     .project { grid-template-columns: 1fr; gap: 24px; }
     .project:nth-child(even) .proj-media { order: 0; }
   }
-  .proj-media .img-slot { aspect-ratio: 16/11; box-shadow: 0 20px 40px -22px rgba(60,40,20,0.4); }
-  .proj-num { font-family: var(--mono); font-size: 13px; color: var(--accent-soft); margin-bottom: 12px; letter-spacing: 0.1em; }
-  .project h3 { font-family: var(--display); font-weight: 400; font-size: 30px; line-height: 1.15; margin-bottom: 14px; letter-spacing: -0.01em; }
-  .proj-stack { font-family: var(--mono); font-size: 12px; color: var(--ink-faint); margin-bottom: 18px; letter-spacing: 0.03em; }
-  .project p { color: var(--ink-soft); margin-bottom: 18px; }
+  .proj-media .img-slot { aspect-ratio: 16/11; }
+  .proj-media img { transition: transform 0.6s ease; }
+  .project:hover .proj-media img { transform: scale(1.03); }
+  .proj-num { font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 14px; }
+  .project h3 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(28px, 3vw, 38px);
+    line-height: 1.02;
+    letter-spacing: -0.045em;
+    margin-bottom: 14px;
+  }
+  .proj-stack { font-size: 12px; font-weight: 500; color: var(--ink-faint); margin-bottom: 18px; letter-spacing: 0.1em; text-transform: uppercase; }
+  .project p { color: var(--ink-soft); margin-bottom: 22px; }
   .badge {
     display: inline-block;
-    font-family: var(--mono);
     font-size: 11px;
-    letter-spacing: 0.08em;
+    font-weight: 500;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--accent);
-    background: rgba(156,90,60,0.08);
-    padding: 4px 12px;
-    border-radius: 100px;
+    border: 1px solid var(--ink);
+    padding: 4px 10px;
     margin-bottom: 16px;
   }
-  .proj-links { display: flex; gap: 20px; flex-wrap: wrap; }
+  .proj-links { display: flex; gap: 10px; flex-wrap: wrap; }
   .proj-links a {
-    font-family: var(--mono);
-    font-size: 13px;
-    border-bottom: 1px solid var(--line);
-    padding-bottom: 3px;
-    transition: color 0.2s, border-color 0.2s;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border: 1px solid var(--line);
+    padding: 9px 14px;
+    transition: background 0.25s, color 0.25s, border-color 0.25s;
   }
-  .proj-links a:hover { color: var(--accent); border-color: var(--accent); }
+  .proj-links a:hover { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+
+  /* compact head so the title + strip fit in one screen */
+  .page > .wrap { padding-top: 32px; }
+  .page-head {
+    display: grid;
+    grid-template-columns: 1fr minmax(0, 400px);
+    gap: 0 48px;
+    align-items: end;
+    margin-bottom: 0;
+    padding-bottom: 22px;
+  }
+  .page-head .num { grid-column: 1 / -1; }
+  .page-head h1 { font-size: clamp(56px, 9vw, 128px); }
+  .page-head .sub { margin-top: 0; font-size: 15px; line-height: 1.55; }
+  @media (max-width: 760px) {
+    .page-head { grid-template-columns: 1fr; }
+    .page-head .sub { margin-top: 18px; }
+  }
+
+  /* moving project strip (drifts right, pauses on hover) */
+  .strip {
+    --strip-h: clamp(200px, calc(100svh - var(--bar-h) - 330px), 400px);
+    display: flex;
+    width: 100vw;
+    margin: 24px 0 80px calc(50% - 50vw);
+    overflow: hidden;
+    padding: 8px 0;
+    position: relative;
+    background: var(--bg);
+  }
+  .strip-track {
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+    padding-right: 20px;
+    flex-shrink: 0;
+    animation: drift-right 90s linear infinite;
+  }
+  .strip:hover .strip-track, .strip:focus-within .strip-track { animation-play-state: paused; }
+  @keyframes drift-right {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+  }
+  /* each tile keeps its image's real shape; --k only sets its height */
+  .tile { display: block; flex-shrink: 0; }
+  .tile-media {
+    display: block;
+    height: calc(var(--strip-h) * var(--k, 0.6));
+    overflow: hidden;
+    background: var(--bg-warm);
+  }
+  .tile-media img {
+    width: auto;
+    height: 100%;
+    max-width: none;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+  .tile:hover .tile-media img { opacity: 0.85; }
+  .tile-type {
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
+    width: calc(var(--strip-h) * 0.62);
+    padding: 18px;
+    background: var(--ink);
+    color: var(--bg);
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: calc(var(--strip-h) * 0.11);
+    line-height: 0.9;
+    letter-spacing: -0.06em;
+    text-transform: lowercase;
+  }
+  .tile-cap {
+    display: block;
+    width: 0;
+    min-width: 100%; /* caption never widens the tile */
+    margin-top: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .tile-cap i { font-style: normal; font-size: 8px; margin: 0 6px; vertical-align: 1px; }
+  .project { scroll-margin-top: calc(var(--bar-h) + 32px); }
+  @media (max-width: 720px) {
+    .strip { --strip-h: 260px; margin-bottom: 56px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .strip { overflow-x: auto; }
+    .strip-track { animation: none; }
+    .strip-track[aria-hidden] { display: none; }
+  }
 </style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="logo">Prischa Bajeli</a>
-  <div class="links">
-    <a href="about.html">About</a>
-    <a href="work.html" class="active">Work</a>
-    <a href="research.html">Research</a>
-    <a href="beyond.html">Beyond</a>
-    <a href="contact.html">Contact</a>
+<header class="topbar">
+  <a href="index.html" class="logo" aria-label="Prischa Bajeli, home">prischa.</a>
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>Open to internships</span>
+      <span>2 peer-reviewed papers · IEEE &amp; Springer</span>
+      <span>AI &amp; Data Science · Class of 2027</span>
+    </div>
+  </div>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu"><span></span><span></span></button>
+</header>
+<div class="menu-backdrop"></div>
+<nav class="menu" id="menu" aria-label="Main">
+  <button class="menu-close" type="button" aria-label="Close menu"><span></span><span></span></button>
+  <ul class="menu-links">
+    <li><a href="about.html"><span class="n">01</span><span class="w">about</span></a></li>
+    <li><a href="experience.html"><span class="n">02</span><span class="w">experience</span></a></li>
+    <li><a href="work.html"><span class="n">03</span><span class="w">projects</span></a></li>
+    <li><a href="research.html"><span class="n">04</span><span class="w">research</span></a></li>
+    <li><a href="beyond.html"><span class="n">05</span><span class="w">beyond</span></a></li>
+    <li><a href="contact.html"><span class="n">06</span><span class="w">contact</span></a></li>
+  </ul>
+  <div class="menu-social">
+    <a href="https://github.com/prischab" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://linkedin.com/in/prischa-bajeli" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="resume.pdf" target="_blank" rel="noopener">Résumé</a>
   </div>
 </nav>
 
@@ -74,15 +200,118 @@
   <div class="page">
     <div class="wrap">
       <div class="page-head fade-in d1">
-        <span class="num">02 / Work</span>
-        <h1>Work</h1>
+        <span class="num">03 / Projects</span>
+        <h1>Projects</h1>
         <p class="sub">Projects spanning agentic AI, machine learning, MLOps, RAG systems, IoT, and full-stack development — from research papers to deployed applications.</p>
+      </div>
+
+      <div class="strip fade-in d2" aria-label="Projects">
+        <div class="strip-track">
+          <a class="tile" style="--k:0.62" href="#face-recognition">
+            <span class="tile-media"><img src="images/project-face.png" alt="" loading="lazy"></span>
+            <span class="tile-cap">Face Recognition <i>●</i> IEEE 2025</span>
+          </a>
+          <a class="tile" style="--k:0.5" href="#energy-prediction">
+            <span class="tile-media"><img src="images/project-energy.png" alt="" loading="lazy"></span>
+            <span class="tile-cap">Energy Forecasting <i>●</i> Springer 2025</span>
+          </a>
+          <a class="tile" style="--k:0.58" href="#siora2k5">
+            <span class="tile-media"><img src="images/project-siora.png" alt="" loading="lazy"></span>
+            <span class="tile-cap">Siora2k5 <i>●</i> Agentic AI</span>
+          </a>
+          <a class="tile" style="--k:0.66" href="#explainai">
+            <span class="tile-media"><img src="images/project-xray.png" alt="" loading="lazy"></span>
+            <span class="tile-cap">Chest X-Ray XAI <i>●</i> Deep Learning</span>
+          </a>
+          <a class="tile" style="--k:0.5" href="#medguide">
+            <span class="tile-media"><img src="images/project-medguide.png" alt="" loading="lazy"></span>
+            <span class="tile-cap">MedGuide <i>●</i> RAG</span>
+          </a>
+          <a class="tile" style="--k:0.6" href="#archive-2k5">
+            <span class="tile-media"><img src="images/project-archive.png" alt="" loading="lazy"></span>
+            <span class="tile-cap">Archive 2k5 <i>●</i> Full-Stack</span>
+          </a>
+          <a class="tile" style="--k:0.7" href="#credit-risk">
+            <span class="tile-media"><img src="images/project-credit.png" alt="" loading="lazy"></span>
+            <span class="tile-cap">Credit Risk <i>●</i> Data Science</span>
+          </a>
+          <a class="tile" style="--k:0.52" href="#heart-disease-mlops">
+            <span class="tile-media"><img src="images/project-mlops.png" alt="" loading="lazy"></span>
+            <span class="tile-cap">Heart Disease MLOps <i>●</i> MLOps</span>
+          </a>
+          <a class="tile" style="--k:1" href="#jobai">
+            <span class="tile-media"><img src="images/project-jobai.png" alt="" loading="lazy"></span>
+            <span class="tile-cap">JobAI <i>●</i> Mobile App</span>
+          </a>
+          <a class="tile" style="--k:0.48" href="#math-game">
+            <span class="tile-media"><img src="images/project-mathgame.png" alt="" loading="lazy"></span>
+            <span class="tile-cap">Math Game <i>●</i> UX</span>
+          </a>
+          <a class="tile" style="--k:0.7" href="#club-dashboard">
+            <span class="tile-media"><span class="tile-type">Club Dashboard</span></span>
+            <span class="tile-cap">Club Dashboard <i>●</i> Full-Stack</span>
+          </a>
+          <a class="tile" style="--k:0.55" href="#primetrade">
+            <span class="tile-media"><span class="tile-type">Primetrade</span></span>
+            <span class="tile-cap">Primetrade <i>●</i> Data Science</span>
+          </a>
+        </div>
+        <div class="strip-track" aria-hidden="true">
+          <a class="tile" style="--k:0.62" href="#face-recognition" tabindex="-1">
+            <span class="tile-media"><img src="images/project-face.png" alt="" loading="lazy"></span>
+            <span class="tile-cap">Face Recognition <i>●</i> IEEE 2025</span>
+          </a>
+          <a class="tile" style="--k:0.5" href="#energy-prediction" tabindex="-1">
+            <span class="tile-media"><img src="images/project-energy.png" alt="" loading="lazy"></span>
+            <span class="tile-cap">Energy Forecasting <i>●</i> Springer 2025</span>
+          </a>
+          <a class="tile" style="--k:0.58" href="#siora2k5" tabindex="-1">
+            <span class="tile-media"><img src="images/project-siora.png" alt="" loading="lazy"></span>
+            <span class="tile-cap">Siora2k5 <i>●</i> Agentic AI</span>
+          </a>
+          <a class="tile" style="--k:0.66" href="#explainai" tabindex="-1">
+            <span class="tile-media"><img src="images/project-xray.png" alt="" loading="lazy"></span>
+            <span class="tile-cap">Chest X-Ray XAI <i>●</i> Deep Learning</span>
+          </a>
+          <a class="tile" style="--k:0.5" href="#medguide" tabindex="-1">
+            <span class="tile-media"><img src="images/project-medguide.png" alt="" loading="lazy"></span>
+            <span class="tile-cap">MedGuide <i>●</i> RAG</span>
+          </a>
+          <a class="tile" style="--k:0.6" href="#archive-2k5" tabindex="-1">
+            <span class="tile-media"><img src="images/project-archive.png" alt="" loading="lazy"></span>
+            <span class="tile-cap">Archive 2k5 <i>●</i> Full-Stack</span>
+          </a>
+          <a class="tile" style="--k:0.7" href="#credit-risk" tabindex="-1">
+            <span class="tile-media"><img src="images/project-credit.png" alt="" loading="lazy"></span>
+            <span class="tile-cap">Credit Risk <i>●</i> Data Science</span>
+          </a>
+          <a class="tile" style="--k:0.52" href="#heart-disease-mlops" tabindex="-1">
+            <span class="tile-media"><img src="images/project-mlops.png" alt="" loading="lazy"></span>
+            <span class="tile-cap">Heart Disease MLOps <i>●</i> MLOps</span>
+          </a>
+          <a class="tile" style="--k:1" href="#jobai" tabindex="-1">
+            <span class="tile-media"><img src="images/project-jobai.png" alt="" loading="lazy"></span>
+            <span class="tile-cap">JobAI <i>●</i> Mobile App</span>
+          </a>
+          <a class="tile" style="--k:0.48" href="#math-game" tabindex="-1">
+            <span class="tile-media"><img src="images/project-mathgame.png" alt="" loading="lazy"></span>
+            <span class="tile-cap">Math Game <i>●</i> UX</span>
+          </a>
+          <a class="tile" style="--k:0.7" href="#club-dashboard" tabindex="-1">
+            <span class="tile-media"><span class="tile-type">Club Dashboard</span></span>
+            <span class="tile-cap">Club Dashboard <i>●</i> Full-Stack</span>
+          </a>
+          <a class="tile" style="--k:0.55" href="#primetrade" tabindex="-1">
+            <span class="tile-media"><span class="tile-type">Primetrade</span></span>
+            <span class="tile-cap">Primetrade <i>●</i> Data Science</span>
+          </a>
+        </div>
       </div>
 
       <div class="fade-in d2">
 
         <!-- Project 1 — IoT Face Recognition (IEEE published, real hardware) -->
-        <div class="project">
+        <div class="project" id="face-recognition">
           <div class="proj-media">
             <div class="img-slot">
               <img src="images/project-face.png" alt="Face recognition attendance system">
@@ -103,7 +332,7 @@
         </div>
 
         <!-- Project 2 — Energy Prediction (Springer published, LSTM + RFE) -->
-        <div class="project">
+        <div class="project" id="energy-prediction">
           <div class="proj-media">
             <div class="img-slot">
               <img class="fit-contain" src="images/project-energy.png" alt="Energy consumption prediction">
@@ -124,7 +353,7 @@
         </div>
 
         <!-- Project 3 — Siora2k5 (agentic AI, live demo, built two ways) -->
-        <div class="project">
+        <div class="project" id="siora2k5">
           <div class="proj-media">
             <div class="img-slot">
               <img class="fit-contain" src="images/project-siora.png" alt="Siora2k5 agentic AI research assistant">
@@ -144,7 +373,7 @@
         </div>
 
         <!-- Project 4 — ExplainAI (medical DL, 112K images, Grad-CAM, 0.83 AUC) -->
-        <div class="project">
+        <div class="project" id="explainai">
           <div class="proj-media">
             <div class="img-slot">
               <img src="images/project-xray.png" alt="Chest X-ray diagnosis">
@@ -163,7 +392,7 @@
         </div>
 
         <!-- Project 5 — MedGuide RAG (grounded citations, refuses to hallucinate) -->
-        <div class="project">
+        <div class="project" id="medguide">
           <div class="proj-media">
             <div class="img-slot">
               <img class="fit-contain" src="images/project-medguide.png" alt="MedGuide clinical guideline RAG assistant">
@@ -182,7 +411,7 @@
         </div>
 
         <!-- Project 6 — Archive 2k5 (full-stack e-commerce, custom payment flow) -->
-        <div class="project">
+        <div class="project" id="archive-2k5">
           <div class="proj-media">
             <div class="img-slot">
               <img class="fit-contain" src="images/project-archive.png" alt="Archive 2k5 thrift store with UPI QR checkout">
@@ -201,7 +430,7 @@
         </div>
 
         <!-- Project 7 — Credit Risk Analysis (150K borrowers, ROC-AUC 0.84) -->
-        <div class="project">
+        <div class="project" id="credit-risk">
           <div class="proj-media">
             <div class="img-slot">
               <img class="fit-contain" src="images/project-credit.png" alt="Credit risk analysis predicting loan default">
@@ -220,7 +449,7 @@
         </div>
 
         <!-- Project 8 — Heart Disease MLOps (Docker + CI/CD + FastAPI) -->
-        <div class="project">
+        <div class="project" id="heart-disease-mlops">
           <div class="proj-media">
             <div class="img-slot">
               <img class="fit-contain" src="images/project-mlops.png" alt="Heart disease predictor MLOps pipeline">
@@ -239,7 +468,7 @@
         </div>
 
         <!-- Project 9 — JobAI (live AI mobile app) -->
-        <div class="project">
+        <div class="project" id="jobai">
           <div class="proj-media">
             <div class="img-slot">
               <img class="fit-contain" src="images/project-jobai.png" alt="JobAI mobile app">
@@ -259,7 +488,7 @@
         </div>
 
         <!-- Project 10 — Educational Math Game -->
-        <div class="project">
+        <div class="project" id="math-game">
           <div class="proj-media">
             <div class="img-slot">
               <img class="fit-contain" src="images/project-mathgame.png" alt="Educational math game">
@@ -278,7 +507,7 @@
         </div>
 
         <!-- Project 11 — University Club Dashboard -->
-        <div class="project text-only">
+        <div class="project text-only" id="club-dashboard">
           <div class="proj-body">
             <div class="proj-num">Project 11</div>
             <span class="badge">Full-Stack · Database</span>
@@ -289,7 +518,7 @@
         </div>
 
         <!-- Project 12 — Primetrade (market sentiment analysis) -->
-        <div class="project text-only">
+        <div class="project text-only" id="primetrade">
           <div class="proj-body">
             <div class="proj-num">Project 12</div>
             <span class="badge">Data Science · Market Analysis</span>
@@ -318,5 +547,6 @@
   </div>
 </footer>
 
+<script src="site.js"></script>
 </body>
 </html>
