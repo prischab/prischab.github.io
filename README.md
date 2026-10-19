@@ -5,6 +5,7 @@ A clean, minimal portfolio. Plain HTML/CSS — no build step, no frameworks.
 ## Pages
 - `index.html`    → Home (just your name + photo)
 - `about.html`    → About, Toolkit, Education
+- `experience.html` → Choice TechLab internship + internship projects
 - `work.html`     → Projects
 - `research.html` → Publications (with preview cards + paper links)
 - `beyond.html`   → Dhvani music club + competition wins
@@ -52,11 +53,8 @@ delete the `<div class="paper-mock">...</div>` block, and uncomment the `<img>` 
 ---
 
 ## Still to edit
-- research.html : IEEE link added. Add the Springer/DOI link when available.
-  (DOI) paper URLs.
-- beyond.html   : awards now filled (volleyball + Dhvani fests + events) — edit if needed.
-- work.html     : replace `#` blog/demo links with real URLs.
-- Double-check the LinkedIn URL (used linkedin.com/in/prischa-bajeli).
+- experience.html: add Digital ILAC features + stack (see TODO comments)
+- experience.html: add internship screenshots to assets/internship/<project>/ui-1.png, ui-2.png
 
 ---
 

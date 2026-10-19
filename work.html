@@ -4,6 +4,15 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Projects — Prischa Bajeli</title>
+<meta name="description" content="Projects by Prischa Bajeli — agentic AI, RAG, deep learning, MLOps, IoT and full-stack apps." />
+<meta property="og:title" content="Projects — Prischa Bajeli" />
+<meta property="og:description" content="Projects by Prischa Bajeli — agentic AI, RAG, deep learning, MLOps, IoT and full-stack apps." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://prischab.github.io/work.html" />
+<meta property="og:image" content="https://prischab.github.io/images/profile.jpg" />
+<meta name="twitter:card" content="summary" />
+<link rel="canonical" href="https://prischab.github.io/work.html" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%236a0c06'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-weight='bold' font-size='38' fill='%23ece4d6'%3Ep.%3C/text%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400..800&amp;family=Space+Grotesk:wght@400..600&amp;display=swap" rel="stylesheet" />
@@ -138,6 +147,14 @@
     letter-spacing: -0.06em;
     text-transform: lowercase;
   }
+  /* image-less fallback inside a project card: centred name, same look as strip tiles */
+  .img-slot > .tile-type {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: clamp(34px, 4.4vw, 60px);
+  }
   .tile-cap {
     display: block;
     width: 0;
@@ -163,6 +180,387 @@
     .strip-track { animation: none; }
     .strip-track[aria-hidden] { display: none; }
   }
+
+  /* ---------- Onseis-style project grid ---------- */
+  .proj-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 64px 48px;
+    align-items: start;
+  }
+  @media (max-width: 1080px) { .proj-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 56px 32px; } }
+  @media (max-width: 640px)  { .proj-grid { grid-template-columns: 1fr; gap: 48px; } }
+  .proj-grid .project {
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+  }
+  .proj-grid .project:focus-visible { outline: 2px solid var(--ink); outline-offset: 6px; }
+  .proj-grid .proj-media { order: 0; }
+  .proj-grid .img-slot { aspect-ratio: auto; border: none; }
+  .proj-grid .img-slot img { height: auto; transition: opacity 0.3s ease; }
+  /* tall screenshots (e.g. phone apps) shrink to fit, centred on a beige mat — never cropped */
+  .proj-grid .img-slot { background: var(--bg-warm); }
+  .proj-grid .img-slot img { width: auto; max-width: 100%; max-height: 380px; }
+  .proj-grid .project:hover .proj-media img { transform: none; opacity: 0.88; }
+  .proj-grid .img-slot:has(> .tile-type) { aspect-ratio: 4 / 3; }
+  .proj-grid .img-slot > .tile-type { font-size: clamp(28px, 2.6vw, 40px); padding: 20px; }
+  .proj-grid .proj-body { display: flex; flex-direction: column; margin-top: 12px; }
+  .proj-grid .proj-num, .proj-grid .project p, .proj-grid .proj-links { display: none; }
+  .proj-grid .project h3 {
+    order: -1;
+    font-family: var(--body);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin: 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--ink);
+  }
+  .proj-grid .badge {
+    display: block;
+    border: none;
+    margin: 0;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--ink);
+  }
+  .proj-grid .proj-stack {
+    margin: 0;
+    padding: 7px 0 0;
+    font-size: 11px;
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* ---------- filter buttons (bello-style) ---------- */
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 24px 0;
+    margin: -32px 0 48px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .filters button {
+    font-family: var(--body);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: transparent;
+    border: 1px solid var(--line);
+    padding: 13px 20px;
+    cursor: pointer;
+    transition: background 0.25s, color 0.25s, border-color 0.25s;
+  }
+  .filters button sup { font-size: 9px; margin-left: 5px; letter-spacing: 0.05em; opacity: 0.6; }
+  .filters button:hover { border-color: var(--ink); }
+  .filters button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+  .filters button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+  @media (max-width: 640px) {
+    .filters { gap: 8px; }
+    .filters button { padding: 10px 13px; font-size: 11px; letter-spacing: 0.12em; }
+  }
+  .proj-grid .project[hidden] { display: none; }
+  .proj-grid .project.is-shown { animation: fadeUp 0.5s ease both; }
+
+  /* ---------- project modal (centred pop-up with gallery) ---------- */
+  .pp-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 330;
+    background: rgba(60, 12, 6, 0.35);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .pp {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 340;
+    width: min(1120px, 92vw);
+    max-height: 88vh;
+    display: flex;
+    background: var(--bg-alt);
+    border: 1px solid var(--line);
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, -50%) scale(0.97);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s linear 0.3s;
+  }
+  .pp-open .pp {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .pp-open .pp-backdrop { opacity: 1; pointer-events: auto; }
+  body.pp-open { overflow: hidden; }
+  .pp .menu-close { position: absolute; top: 0; right: 0; z-index: 4; background: var(--bg-alt); }
+
+  /* left: gallery */
+  .pp-gallery {
+    flex: 0 0 58%;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 22px;
+    border-right: 1px solid var(--line);
+  }
+  .g-stage {
+    position: relative;
+    height: min(64vh, 620px);
+    background: var(--bg-warm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .g-stage.is-loading::after {
+    content: "Loading…";
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .g-zoom {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: none;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-in;
+  }
+  .g-zoom:focus-visible { outline: 2px solid var(--ink); outline-offset: -4px; }
+  .g-main { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; display: block; }
+  .g-arrow {
+    position: absolute;
+    top: 50%;
+    width: 40px;
+    height: 40px;
+    margin-top: -20px;
+    border: 1px solid var(--line);
+    background: var(--bg-alt);
+    color: var(--ink);
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.25s, color 0.25s, border-color 0.25s;
+  }
+  .g-prev { left: 10px; }
+  .g-next { right: 10px; }
+  .g-arrow:hover { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+  .g-arrow:focus-visible, .g-thumb:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .g-count {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 4px 8px;
+    background: var(--bg-alt);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    font-variant-numeric: tabular-nums;
+  }
+  .g-thumbs { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 2px; }
+  .g-thumb {
+    flex: 0 0 76px;
+    height: 54px;
+    padding: 2px;
+    border: 1px solid var(--line);
+    background: var(--bg-warm);
+    cursor: pointer;
+  }
+  .g-thumb img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .g-thumb[aria-current="true"] { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+  .pp-gallery.is-single .g-arrow,
+  .pp-gallery.is-single .g-count,
+  .pp-gallery.is-single .g-thumbs { display: none; }
+  .g-stage > .tile-type {
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: clamp(34px, 4vw, 60px);
+    padding: 28px;
+  }
+
+  /* right: text column (scrolls on its own) */
+  .pp-text { flex: 1; min-width: 0; min-height: 0; overflow-y: auto; padding: 34px 32px 0; }
+  .pp-text > .proj-body { padding-bottom: 32px; }
+  .pp .cs-head { padding-right: 56px; }
+  .pp .cs-slide img { display: none; } /* screenshots live in the gallery */
+  .pp p { color: var(--ink-soft); margin-bottom: 22px; }
+  .pp h3 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(26px, 2.8vw, 36px);
+    line-height: 1.02;
+    letter-spacing: -0.045em;
+    margin-bottom: 14px;
+  }
+
+  /* tablet: one column, whole modal scrolls */
+  @media (max-width: 900px) {
+    .pp { display: block; overflow-y: auto; }
+    .pp-gallery { border-right: none; border-bottom: 1px solid var(--line); padding: 18px; }
+    .g-stage { height: min(52vh, 460px); }
+    .pp-text { overflow: visible; padding: 28px 24px 0; }
+  }
+  /* phone: full screen */
+  @media (max-width: 760px) {
+    .pp {
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      max-height: none;
+      border: none;
+      transform: scale(0.97);
+    }
+    .pp-open .pp { transform: scale(1); }
+    .pp-gallery { padding: calc(var(--bar-h) + 4px) 14px 14px; }
+    .g-stage { height: min(46vh, 400px); }
+    .pp-text { padding: 24px 20px 0; }
+    .g-arrow { width: 36px; height: 36px; margin-top: -18px; }
+  }
+
+  /* full-screen image (lightbox) */
+  .lb {
+    position: fixed;
+    inset: 0;
+    z-index: 400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3vh 3vw;
+    border: none;
+    background: rgba(20, 6, 3, 0.92);
+    cursor: zoom-out;
+  }
+  .lb[hidden] { display: none; }
+  .lb img { max-width: 94vw; max-height: 90vh; width: auto; height: auto; object-fit: contain; }
+  .lb:focus-visible { outline: 2px solid var(--bg); outline-offset: -6px; }
+  @media (prefers-reduced-motion: reduce) {
+    .pp, .pp-open .pp, .pp-backdrop { transition: none; }
+  }
+  /* ---------- case-study slides inside the panel ---------- */
+  .pp .cs-head { margin-bottom: 26px; padding-bottom: 22px; border-bottom: 1px solid var(--line); }
+  .pp .cs-head .proj-stack { margin-bottom: 0; }
+  .cs-deck { display: grid; }
+  .cs-slide {
+    grid-area: 1 / 1;
+    min-width: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0s linear 0.25s;
+  }
+  .cs-slide.is-active { opacity: 1; visibility: visible; transition: opacity 0.25s ease; }
+  .cs-slide img {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    max-height: 42vh;
+    margin: 0 auto 24px;
+    border: 1px solid var(--line);
+    background: var(--bg-warm);
+  }
+  .cs-slide .proj-num { margin-bottom: 10px; }
+  .cs-slide h4 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(22px, 2.4vw, 28px);
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+    margin-bottom: 16px;
+  }
+  .cs-slide p { color: var(--ink-soft); margin-bottom: 20px; }
+  .cs-slide ul { list-style: none; margin-bottom: 20px; }
+  .cs-slide li {
+    position: relative;
+    padding: 9px 0 9px 22px;
+    border-top: 1px solid var(--line);
+    font-size: 15px;
+    color: var(--ink-soft);
+  }
+  .cs-slide li:last-child { border-bottom: 1px solid var(--line); }
+  .cs-slide li::before { content: "/"; position: absolute; left: 0; color: var(--ink); }
+  .cs-slide .proj-links { margin-top: 4px; }
+  /* pinned to the bottom of the scrolling column so Prev / Next stay in view */
+  .cs-nav {
+    position: sticky;
+    bottom: 0;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 16px;
+    margin-top: 28px;
+    padding: 16px 0 18px;
+    border-top: 1px solid var(--ink);
+    background: var(--bg-alt);
+  }
+  .cs-btn {
+    font-family: var(--body);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: transparent;
+    border: 1px solid var(--line);
+    padding: 9px 14px;
+    cursor: pointer;
+    transition: background 0.25s, color 0.25s, border-color 0.25s;
+  }
+  .cs-btn:hover:not(:disabled) { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+  .cs-btn:disabled { opacity: 0.35; cursor: default; }
+  .cs-btn:focus-visible, .cs-dot:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .cs-mid { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .cs-count { font-size: 12px; font-weight: 600; letter-spacing: 0.2em; font-variant-numeric: tabular-nums; }
+  .cs-dots { display: flex; gap: 4px; }
+  .cs-dot {
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+  }
+  .cs-dot::after {
+    content: "";
+    position: absolute;
+    inset: 7px;
+    border: 1px solid var(--ink);
+    border-radius: 50%;
+    transition: background 0.2s;
+  }
+  .cs-dot[aria-current="step"]::after { background: var(--ink); }
+  @media (max-width: 640px) {
+    .cs-nav { gap: 10px; }
+    .cs-btn { padding: 9px 10px; letter-spacing: 0.1em; }
+  }
+  @media (prefers-reduced-motion: reduce) { .cs-slide, .cs-slide.is-active { transition: none; } }
+
+  @media (prefers-reduced-motion: reduce) { .pp, .pp-backdrop { transition: none; } }
 </style>
 </head>
 <body>
@@ -171,7 +569,7 @@
   <a href="index.html" class="logo" aria-label="Prischa Bajeli, home">prischa.</a>
   <div class="ticker" aria-hidden="true">
     <div class="ticker-track">
-      <span>Open to internships</span>
+      <span>Open to AI/ML, data &amp; software roles · 2027</span>
       <span>2 peer-reviewed papers · IEEE &amp; Springer</span>
       <span>AI &amp; Data Science · Class of 2027</span>
     </div>
@@ -202,11 +600,27 @@
       <div class="page-head fade-in d1">
         <span class="num">03 / Projects</span>
         <h1>Projects</h1>
-        <p class="sub">Projects spanning agentic AI, machine learning, MLOps, RAG systems, IoT, and full-stack development — from research papers to deployed applications.</p>
+        <p class="sub">Industry work from my internship at Choice TechLab, plus projects spanning agentic AI, RAG, deep learning, IoT and full-stack development — from research papers to deployed applications.</p>
       </div>
 
       <div class="strip fade-in d2" aria-label="Projects">
         <div class="strip-track">
+          <a class="tile" style="--k:0.6" href="#emergency-corridor-proj">
+            <span class="tile-media"><img src="assets/internship/emergency-corridor/ui-1.png" alt="" loading="lazy" data-optional data-fallback="Emergency Corridor"></span>
+            <span class="tile-cap">Emergency Corridor <i>●</i> Internship</span>
+          </a>
+          <a class="tile" style="--k:0.75" href="#call-quality-analyzer-proj">
+            <span class="tile-media"><img src="assets/internship/call-quality-analyzer/ui-1.png" alt="" loading="lazy" data-optional data-fallback="Call Quality"></span>
+            <span class="tile-cap">Call Quality <i>●</i> Internship</span>
+          </a>
+          <a class="tile" style="--k:0.55" href="#worklens-proj">
+            <span class="tile-media"><img src="assets/internship/worklens/ui-1.png" alt="" loading="lazy" data-optional data-fallback="Worklens"></span>
+            <span class="tile-cap">Worklens <i>●</i> Internship</span>
+          </a>
+          <a class="tile" style="--k:0.7" href="#vaani-proj">
+            <span class="tile-media"><img src="assets/internship/vaani/ui-1.png" alt="" loading="lazy" data-optional data-fallback="Vaani"></span>
+            <span class="tile-cap">Vaani <i>●</i> Internship</span>
+          </a>
           <a class="tile" style="--k:0.62" href="#face-recognition">
             <span class="tile-media"><img src="images/project-face.png" alt="" loading="lazy"></span>
             <span class="tile-cap">Face Recognition <i>●</i> IEEE 2025</span>
@@ -227,6 +641,10 @@
             <span class="tile-media"><img src="images/project-medguide.png" alt="" loading="lazy"></span>
             <span class="tile-cap">MedGuide <i>●</i> RAG</span>
           </a>
+          <a class="tile" style="--k:1" href="#jobai">
+            <span class="tile-media"><img src="images/project-jobai.png" alt="" loading="lazy"></span>
+            <span class="tile-cap">JobAI <i>●</i> Mobile App</span>
+          </a>
           <a class="tile" style="--k:0.6" href="#archive-2k5">
             <span class="tile-media"><img src="images/project-archive.png" alt="" loading="lazy"></span>
             <span class="tile-cap">Archive 2k5 <i>●</i> Full-Stack</span>
@@ -239,24 +657,24 @@
             <span class="tile-media"><img src="images/project-mlops.png" alt="" loading="lazy"></span>
             <span class="tile-cap">Heart Disease MLOps <i>●</i> MLOps</span>
           </a>
-          <a class="tile" style="--k:1" href="#jobai">
-            <span class="tile-media"><img src="images/project-jobai.png" alt="" loading="lazy"></span>
-            <span class="tile-cap">JobAI <i>●</i> Mobile App</span>
-          </a>
-          <a class="tile" style="--k:0.48" href="#math-game">
-            <span class="tile-media"><img src="images/project-mathgame.png" alt="" loading="lazy"></span>
-            <span class="tile-cap">Math Game <i>●</i> UX</span>
-          </a>
-          <a class="tile" style="--k:0.7" href="#club-dashboard">
-            <span class="tile-media"><span class="tile-type">Club Dashboard</span></span>
-            <span class="tile-cap">Club Dashboard <i>●</i> Full-Stack</span>
-          </a>
-          <a class="tile" style="--k:0.55" href="#primetrade">
-            <span class="tile-media"><span class="tile-type">Primetrade</span></span>
-            <span class="tile-cap">Primetrade <i>●</i> Data Science</span>
-          </a>
         </div>
         <div class="strip-track" aria-hidden="true">
+          <a class="tile" style="--k:0.6" href="#emergency-corridor-proj" tabindex="-1">
+            <span class="tile-media"><img src="assets/internship/emergency-corridor/ui-1.png" alt="" loading="lazy" data-optional data-fallback="Emergency Corridor"></span>
+            <span class="tile-cap">Emergency Corridor <i>●</i> Internship</span>
+          </a>
+          <a class="tile" style="--k:0.75" href="#call-quality-analyzer-proj" tabindex="-1">
+            <span class="tile-media"><img src="assets/internship/call-quality-analyzer/ui-1.png" alt="" loading="lazy" data-optional data-fallback="Call Quality"></span>
+            <span class="tile-cap">Call Quality <i>●</i> Internship</span>
+          </a>
+          <a class="tile" style="--k:0.55" href="#worklens-proj" tabindex="-1">
+            <span class="tile-media"><img src="assets/internship/worklens/ui-1.png" alt="" loading="lazy" data-optional data-fallback="Worklens"></span>
+            <span class="tile-cap">Worklens <i>●</i> Internship</span>
+          </a>
+          <a class="tile" style="--k:0.7" href="#vaani-proj" tabindex="-1">
+            <span class="tile-media"><img src="assets/internship/vaani/ui-1.png" alt="" loading="lazy" data-optional data-fallback="Vaani"></span>
+            <span class="tile-cap">Vaani <i>●</i> Internship</span>
+          </a>
           <a class="tile" style="--k:0.62" href="#face-recognition" tabindex="-1">
             <span class="tile-media"><img src="images/project-face.png" alt="" loading="lazy"></span>
             <span class="tile-cap">Face Recognition <i>●</i> IEEE 2025</span>
@@ -277,6 +695,10 @@
             <span class="tile-media"><img src="images/project-medguide.png" alt="" loading="lazy"></span>
             <span class="tile-cap">MedGuide <i>●</i> RAG</span>
           </a>
+          <a class="tile" style="--k:1" href="#jobai" tabindex="-1">
+            <span class="tile-media"><img src="images/project-jobai.png" alt="" loading="lazy"></span>
+            <span class="tile-cap">JobAI <i>●</i> Mobile App</span>
+          </a>
           <a class="tile" style="--k:0.6" href="#archive-2k5" tabindex="-1">
             <span class="tile-media"><img src="images/project-archive.png" alt="" loading="lazy"></span>
             <span class="tile-cap">Archive 2k5 <i>●</i> Full-Stack</span>
@@ -289,36 +711,276 @@
             <span class="tile-media"><img src="images/project-mlops.png" alt="" loading="lazy"></span>
             <span class="tile-cap">Heart Disease MLOps <i>●</i> MLOps</span>
           </a>
-          <a class="tile" style="--k:1" href="#jobai" tabindex="-1">
-            <span class="tile-media"><img src="images/project-jobai.png" alt="" loading="lazy"></span>
-            <span class="tile-cap">JobAI <i>●</i> Mobile App</span>
-          </a>
-          <a class="tile" style="--k:0.48" href="#math-game" tabindex="-1">
-            <span class="tile-media"><img src="images/project-mathgame.png" alt="" loading="lazy"></span>
-            <span class="tile-cap">Math Game <i>●</i> UX</span>
-          </a>
-          <a class="tile" style="--k:0.7" href="#club-dashboard" tabindex="-1">
-            <span class="tile-media"><span class="tile-type">Club Dashboard</span></span>
-            <span class="tile-cap">Club Dashboard <i>●</i> Full-Stack</span>
-          </a>
-          <a class="tile" style="--k:0.55" href="#primetrade" tabindex="-1">
-            <span class="tile-media"><span class="tile-type">Primetrade</span></span>
-            <span class="tile-cap">Primetrade <i>●</i> Data Science</span>
-          </a>
         </div>
       </div>
 
-      <div class="fade-in d2">
+      <div class="filters" role="group" aria-label="Filter projects">
+        <button type="button" data-filter="all" aria-pressed="true">All<sup>13</sup></button>
+        <button type="button" data-filter="ai-ml" aria-pressed="false">AI / ML<sup>11</sup></button>
+        <button type="button" data-filter="full-stack" aria-pressed="false">Full-Stack<sup>5</sup></button>
+        <button type="button" data-filter="data-science" aria-pressed="false">Data Science<sup>3</sup></button>
+        <button type="button" data-filter="nlp" aria-pressed="false">NLP<sup>3</sup></button>
+        <button type="button" data-filter="speech" aria-pressed="false">Speech<sup>2</sup></button>
+        <button type="button" data-filter="computer-vision" aria-pressed="false">Computer Vision<sup>2</sup></button>
+      </div>
 
-        <!-- Project 1 — IoT Face Recognition (IEEE published, real hardware) -->
-        <div class="project" id="face-recognition">
+      <div class="proj-grid fade-in d2">
+
+        <!-- Project 1 — AI-Powered Emergency Corridor (internship, Choice TechLab) -->
+        <div class="project" id="emergency-corridor-proj" data-tags="ai-ml full-stack">
+          <div class="proj-media">
+            <div class="img-slot">
+              <img class="fit-contain" src="assets/internship/emergency-corridor/ui-1.png" alt="AI-Powered Emergency Corridor — screenshot" loading="lazy" data-optional data-fallback="AI-Powered Emergency Corridor">
+            </div>
+          </div>
+          <div class="proj-body">
+            <div class="proj-num">Project 01</div>
+            <span class="badge">Internship · Choice TechLab · In progress</span>
+            <h3>AI-Powered Emergency Corridor</h3>
+            <div class="proj-stack">SUMO · TraCI · OpenStreetMap · FastAPI · WebSockets · PostgreSQL/PostGIS · scikit-learn · Claude API · TomTom · Twilio · React · Leaflet/MapLibre</div>
+            <p>A traffic simulation of central Pune for 108 ambulances: signals ahead of the ambulance turn green, police get alerted about jams, and the destination hospital gets a readiness check before arrival. Built on SUMO + TraCI over OpenStreetMap data, with control-room, ambulance-crew and admin screens updating live over WebSockets, scikit-learn predictors, TomTom live traffic, Twilio alerts, and Claude for reading emergency calls.</p>
+            <div class="proj-links">
+              <a href="experience.html#emergency-corridor">Read more →</a>
+            </div>
+          </div>
+          <div class="proj-gallery" hidden>
+            <img src="assets/internship/emergency-corridor/ui-1.png" alt="AI-Powered Emergency Corridor — screenshot 1" loading="lazy" data-optional>
+            <img src="assets/internship/emergency-corridor/ui-2.png" alt="AI-Powered Emergency Corridor — screenshot 2" loading="lazy" data-optional>
+            <img src="assets/internship/emergency-corridor/ui-3.png" alt="AI-Powered Emergency Corridor — screenshot 3" loading="lazy" data-optional>
+            <img src="assets/internship/emergency-corridor/ui-4.png" alt="AI-Powered Emergency Corridor — screenshot 4" loading="lazy" data-optional>
+            <img src="assets/internship/emergency-corridor/ui-5.png" alt="AI-Powered Emergency Corridor — screenshot 5" loading="lazy" data-optional>
+          </div>
+          <template class="cs">
+              <section class="cs-slide">
+                <img data-optional src="assets/internship/emergency-corridor/ui-1.png" alt="AI-Powered Emergency Corridor — the problem" loading="lazy">
+                <div class="proj-num">01 — The problem</div>
+                <h4>A green corridor for Pune’s 108 ambulances</h4>
+                <p>In Pune traffic, ambulances lose critical minutes at signals and in jams. This project simulates a green corridor for Pune's 108 ambulances. Status: in progress.</p>
+              </section>
+              <section class="cs-slide">
+                <div class="proj-num">02 — How it works</div>
+                <h4>Signals turn green ahead of the ambulance</h4>
+                <ul>
+                  <li>Central Pune road network from OpenStreetMap, simulated in SUMO</li>
+                  <li>TraCI controls the simulation live — signals ahead of the ambulance are pre-empted to green</li>
+                  <li>Police get alerted about jams on the route</li>
+                  <li>The destination hospital gets a readiness check before arrival</li>
+                </ul>
+              </section>
+              <section class="cs-slide">
+                <img data-optional src="assets/internship/emergency-corridor/ui-2.png" alt="AI-Powered Emergency Corridor — the screens" loading="lazy">
+                <div class="proj-num">03 — The screens</div>
+                <h4>Three live views</h4>
+                <ul>
+                  <li>Control-room, ambulance-crew and admin views</li>
+                  <li>Live updates over WebSockets</li>
+                  <li>React with Leaflet/MapLibre maps</li>
+                </ul>
+              </section>
+              <section class="cs-slide">
+                <div class="proj-num">04 — Data &amp; AI</div>
+                <h4>Prediction, live traffic and alerts</h4>
+                <ul>
+                  <li>scikit-learn predictors</li>
+                  <li>TomTom live traffic data</li>
+                  <li>Twilio for alerts</li>
+                  <li>Claude reads emergency calls and powers an “Ask AI” assistant</li>
+                  <li>FastAPI + PostgreSQL/PostGIS backend</li>
+                </ul>
+              </section>
+          </template>
+        </div>
+
+        <!-- Project 2 — Call Quality Analyzer (internship, Choice TechLab) -->
+        <div class="project" id="call-quality-analyzer-proj" data-tags="ai-ml nlp speech">
+          <div class="proj-media">
+            <div class="img-slot">
+              <img class="fit-contain" src="assets/internship/call-quality-analyzer/ui-1.png" alt="Call Quality Analyzer — screenshot" loading="lazy" data-optional data-fallback="Call Quality Analyzer">
+            </div>
+          </div>
+          <div class="proj-body">
+            <div class="proj-num">Project 02</div>
+            <span class="badge">Internship · Choice TechLab · Speech &amp; NLP</span>
+            <h3>Call Quality Analyzer</h3>
+            <div class="proj-stack">Python · FastAPI · IndicConformer · faster-whisper · pyannote · Presidio · DeBERTa-NLI · hing-roberta · emotion2vec+ · Claude API</div>
+            <p>An 11-stage pipeline that listens to recorded customer calls and checks sentiment, toxicity, PII leaks, and whether the agent read the required terms &amp; conditions (RAG + DeBERTa-NLI + Claude). Routes English calls to faster-whisper and Hindi/Hinglish to IndicConformer-600M after Whisper broke down on 8 kHz Hinglish audio. Benchmarked at 18.5% DER (AMI) and 27.1% WER (IndicVoices Hindi). FastAPI backend with an upload-and-analyse dashboard.</p>
+            <div class="proj-links">
+              <a href="experience.html#call-quality-analyzer">Read more →</a>
+            </div>
+          </div>
+          <div class="proj-gallery" hidden>
+            <img src="assets/internship/call-quality-analyzer/ui-1.png" alt="Call Quality Analyzer — screenshot 1" loading="lazy" data-optional>
+            <img src="assets/internship/call-quality-analyzer/ui-2.png" alt="Call Quality Analyzer — screenshot 2" loading="lazy" data-optional>
+            <img src="assets/internship/call-quality-analyzer/ui-3.png" alt="Call Quality Analyzer — screenshot 3" loading="lazy" data-optional>
+            <img src="assets/internship/call-quality-analyzer/ui-4.png" alt="Call Quality Analyzer — screenshot 4" loading="lazy" data-optional>
+            <img src="assets/internship/call-quality-analyzer/ui-5.png" alt="Call Quality Analyzer — screenshot 5" loading="lazy" data-optional>
+          </div>
+          <template class="cs">
+              <section class="cs-slide">
+                <img data-optional src="assets/internship/call-quality-analyzer/ui-1.png" alt="Call Quality Analyzer — the problem" loading="lazy">
+                <div class="proj-num">01 — The problem</div>
+                <h4>Reviewing calls by hand is slow</h4>
+                <p>Reviewing customer calls by hand is slow. This pipeline listens to recorded calls and checks tone, rudeness, privacy leaks, and whether the agent read the required terms &amp; conditions.</p>
+              </section>
+              <section class="cs-slide">
+                <div class="proj-num">02 — The pipeline</div>
+                <h4>Eleven stages, one call</h4>
+                <p>11 stages including transcription, diarization, sentiment &amp; emotion (hing-roberta, emotion2vec+), PII redaction (Microsoft Presidio), toxicity detection, T&amp;C compliance (RAG + DeBERTa-NLI + Claude) and a conduct rubric.</p>
+              </section>
+              <section class="cs-slide">
+                <div class="proj-num">03 — What I learned</div>
+                <h4>Whisper vs. 8 kHz Hinglish</h4>
+                <ul>
+                  <li>Whisper degenerated on 8 kHz Hinglish audio, so I switched to IndicConformer-600M</li>
+                  <li>Calls are routed by detected language: English → faster-whisper, Hindi/Hinglish → IndicConformer</li>
+                  <li>Whisper mislabels Hindi as Urdu unless the language is forced</li>
+                </ul>
+              </section>
+              <section class="cs-slide">
+                <img data-optional src="assets/internship/call-quality-analyzer/ui-2.png" alt="Call Quality Analyzer — results" loading="lazy">
+                <div class="proj-num">04 — Results</div>
+                <h4>Benchmarks and the dashboard</h4>
+                <ul>
+                  <li>18.5% DER on the AMI corpus</li>
+                  <li>27.1% WER on IndicVoices Hindi</li>
+                  <li>FastAPI backend + dashboard: upload audio or zip files, built-in player, per-call analysis</li>
+                </ul>
+              </section>
+          </template>
+        </div>
+
+        <!-- Project 3 — Choice360 Worklens (internship, Choice TechLab) -->
+        <div class="project" id="worklens-proj" data-tags="full-stack">
+          <div class="proj-media">
+            <div class="img-slot">
+              <img class="fit-contain" src="assets/internship/worklens/ui-1.png" alt="Choice360 Worklens — screenshot" loading="lazy" data-optional data-fallback="Choice360 Worklens">
+            </div>
+          </div>
+          <div class="proj-body">
+            <div class="proj-num">Project 03</div>
+            <span class="badge">Internship · Choice TechLab · Backend &amp; Systems</span>
+            <h3>Choice360 Worklens</h3>
+            <div class="proj-stack">Python · FastAPI · PostgreSQL · Alembic · AWS S3 · Docker · pytest · Gemini API</div>
+            <p>A desktop productivity and telemetry platform. Async FastAPI backend with 16+ agent APIs and range-partitioned time-series tables in PostgreSQL; a cross-platform Python desktop agent (Linux/Windows/macOS) with an offline retry queue, encrypted credentials and signed auto-update; JWT device auth, S3 presigned screenshot uploads, and Gemini-generated per-device productivity summaries. 38 pytest suites, Dockerized.</p>
+            <div class="proj-links">
+              <a href="experience.html#worklens">Read more →</a>
+            </div>
+          </div>
+          <div class="proj-gallery" hidden>
+            <img src="assets/internship/worklens/ui-1.png" alt="Choice360 Worklens — screenshot 1" loading="lazy" data-optional>
+            <img src="assets/internship/worklens/ui-2.png" alt="Choice360 Worklens — screenshot 2" loading="lazy" data-optional>
+            <img src="assets/internship/worklens/ui-3.png" alt="Choice360 Worklens — screenshot 3" loading="lazy" data-optional>
+            <img src="assets/internship/worklens/ui-4.png" alt="Choice360 Worklens — screenshot 4" loading="lazy" data-optional>
+            <img src="assets/internship/worklens/ui-5.png" alt="Choice360 Worklens — screenshot 5" loading="lazy" data-optional>
+          </div>
+          <template class="cs">
+              <section class="cs-slide">
+                <img data-optional src="assets/internship/worklens/ui-1.png" alt="Choice360 Worklens — what it is" loading="lazy">
+                <div class="proj-num">01 — What it is</div>
+                <h4>Productivity and system health, in one view</h4>
+                <p>A desktop productivity and telemetry platform — an agent on employees' computers reports activity and system health to a backend that managers view through an admin dashboard.</p>
+              </section>
+              <section class="cs-slide">
+                <div class="proj-num">02 — The desktop agent</div>
+                <h4>One agent, three operating systems</h4>
+                <ul>
+                  <li>Cross-platform Python (Linux / Windows / macOS)</li>
+                  <li>Pluggable OS collectors</li>
+                  <li>Offline queue with retry and backfill</li>
+                  <li>Encrypted credentials</li>
+                  <li>Signed auto-update</li>
+                </ul>
+              </section>
+              <section class="cs-slide">
+                <img data-optional src="assets/internship/worklens/ui-2.png" alt="Choice360 Worklens — the backend" loading="lazy">
+                <div class="proj-num">03 — The backend</div>
+                <h4>Async APIs and time-series storage</h4>
+                <ul>
+                  <li>Async FastAPI with 16+ agent APIs (enrollment, heartbeats, telemetry, system health, screenshot upload)</li>
+                  <li>PostgreSQL with range-partitioned time-series tables, 20+ Alembic migrations</li>
+                  <li>JWT device auth</li>
+                  <li>S3 presigned-URL screenshot uploads</li>
+                </ul>
+              </section>
+              <section class="cs-slide">
+                <div class="proj-num">04 — AI &amp; quality</div>
+                <h4>Summaries, tests and what’s next</h4>
+                <ul>
+                  <li>Gemini-generated per-device productivity summaries</li>
+                  <li>38 pytest suites with AWS mocked via moto</li>
+                  <li>Dockerized</li>
+                  <li>Now: making productivity scoring fair for off-desk teams like sales, and updating the macOS desktop agent</li>
+                </ul>
+              </section>
+          </template>
+        </div>
+
+        <!-- Project 4 — Vaani — Multilingual Voice Cloning (internship, Choice TechLab) -->
+        <div class="project" id="vaani-proj" data-tags="ai-ml speech">
+          <div class="proj-media">
+            <div class="img-slot">
+              <img class="fit-contain" src="assets/internship/vaani/ui-1.png" alt="Vaani — Multilingual Voice Cloning — screenshot" loading="lazy" data-optional data-fallback="Vaani — Multilingual Voice Cloning">
+            </div>
+          </div>
+          <div class="proj-body">
+            <div class="proj-num">Project 04</div>
+            <span class="badge">Internship · Choice TechLab · Voice AI</span>
+            <h3>Vaani — Multilingual Voice Cloning</h3>
+            <div class="proj-stack">Python · FastAPI · Chatterbox TTS · IndicF5 · faster-whisper · Resemblyzer · PostgreSQL</div>
+            <p>Give it a short voice sample and it speaks new text in that voice — in English and 11 Indian languages. English runs on Chatterbox in-process; Indic languages route to a separate IndicF5 service to isolate dependency conflicts. Includes Indian-context text normalization, Hinglish transliteration, Postgres-backed voice profiles, and a self-checking loop that verifies each output with faster-whisper WER and Resemblyzer speaker similarity.</p>
+            <div class="proj-links">
+              <a href="experience.html#vaani">Read more →</a>
+            </div>
+          </div>
+          <div class="proj-gallery" hidden>
+            <img src="assets/internship/vaani/ui-1.png" alt="Vaani — Multilingual Voice Cloning — screenshot 1" loading="lazy" data-optional>
+            <img src="assets/internship/vaani/ui-2.png" alt="Vaani — Multilingual Voice Cloning — screenshot 2" loading="lazy" data-optional>
+            <img src="assets/internship/vaani/ui-3.png" alt="Vaani — Multilingual Voice Cloning — screenshot 3" loading="lazy" data-optional>
+            <img src="assets/internship/vaani/ui-4.png" alt="Vaani — Multilingual Voice Cloning — screenshot 4" loading="lazy" data-optional>
+            <img src="assets/internship/vaani/ui-5.png" alt="Vaani — Multilingual Voice Cloning — screenshot 5" loading="lazy" data-optional>
+          </div>
+          <template class="cs">
+              <section class="cs-slide">
+                <img data-optional src="assets/internship/vaani/ui-1.png" alt="Vaani — Multilingual Voice Cloning — what it does" loading="lazy">
+                <div class="proj-num">01 — What it does</div>
+                <h4>Your voice, in twelve languages</h4>
+                <p>Give it a short voice sample and it speaks new text in that voice — in English and 11 Indian languages.</p>
+              </section>
+              <section class="cs-slide">
+                <div class="proj-num">02 — Architecture</div>
+                <h4>Two engines, kept apart</h4>
+                <ul>
+                  <li>English → Chatterbox Multilingual TTS, in-process</li>
+                  <li>11 Indic languages → IndicF5, run as a separate service over HTTP (port 8001) because of hard dependency conflicts</li>
+                  <li>FastAPI microservice with Postgres-backed voice profiles</li>
+                </ul>
+              </section>
+              <section class="cs-slide">
+                <img data-optional src="assets/internship/vaani/ui-2.png" alt="Vaani — Multilingual Voice Cloning — making indian text speakable" loading="lazy">
+                <div class="proj-num">03 — Making Indian text speakable</div>
+                <h4>Normalize first, then speak</h4>
+                <ul>
+                  <li>Indian-context text normalization</li>
+                  <li>Hinglish transliteration module</li>
+                </ul>
+              </section>
+              <section class="cs-slide">
+                <div class="proj-num">04 — Self-checking output</div>
+                <h4>Every clip is verified</h4>
+                <p>Every synthesis is verified — faster-whisper transcribes it back to check word error rate, and Resemblyzer checks speaker similarity to the original voice.</p>
+              </section>
+          </template>
+        </div>
+
+        <!-- Project 5 — IoT Face Recognition (IEEE published, real hardware) -->
+        <div class="project" id="face-recognition" data-tags="ai-ml computer-vision">
           <div class="proj-media">
             <div class="img-slot">
               <img src="images/project-face.png" alt="Face recognition attendance system">
             </div>
           </div>
           <div class="proj-body">
-            <div class="proj-num">Project 01</div>
+            <div class="proj-num">Project 05</div>
             <span class="badge">Published · IEEE ETCOM 2025</span>
             <h3>IoT-Enabled Face Recognition Attendance System</h3>
             <div class="proj-stack">Python · OpenCV · LBPH · Raspberry Pi 4 · GPIO · SQLite</div>
@@ -329,17 +991,50 @@
               <a href="https://ieeexplore.ieee.org/document/11436752" target="_blank" rel="noopener">Research paper →</a>
             </div>
           </div>
+          <div class="proj-gallery" hidden>
+            <img src="images/project-face.png" alt="IoT-Enabled Face Recognition Attendance System — screenshot 1" loading="lazy" data-optional>
+            <img src="assets/projects/face-recognition/2.png" alt="IoT-Enabled Face Recognition Attendance System — screenshot 2" loading="lazy" data-optional>
+            <img src="assets/projects/face-recognition/3.png" alt="IoT-Enabled Face Recognition Attendance System — screenshot 3" loading="lazy" data-optional>
+            <img src="assets/projects/face-recognition/4.png" alt="IoT-Enabled Face Recognition Attendance System — screenshot 4" loading="lazy" data-optional>
+            <img src="assets/projects/face-recognition/5.png" alt="IoT-Enabled Face Recognition Attendance System — screenshot 5" loading="lazy" data-optional>
+          </div>
+          <template class="cs">
+              <section class="cs-slide">
+                <img data-optional src="images/project-face.png" alt="IoT-Enabled Face Recognition Attendance System — overview" loading="lazy">
+                <div class="proj-num">01 — Overview</div>
+                <h4>Attendance without the roll call</h4>
+                <p>An end-to-end LBPH face recognition pipeline on a Raspberry Pi 4 that automates attendance.</p>
+              </section>
+              <section class="cs-slide">
+                <div class="proj-num">02 — How it works</div>
+                <h4>LBPH on a Raspberry Pi 4</h4>
+                <ul>
+                  <li>End-to-end LBPH face recognition pipeline</li>
+                  <li>Runs on a Raspberry Pi 4</li>
+                  <li>Python, OpenCV, GPIO and SQLite</li>
+                </ul>
+              </section>
+              <section class="cs-slide">
+                <div class="proj-num">03 — Results &amp; links</div>
+                <h4>95%+ accuracy, zero manual input</h4>
+                <ul>
+                  <li>Automates attendance for 50+ students at 95%+ accuracy</li>
+                  <li>Cuts per-session logging from ~5 minutes to zero manual input</li>
+                  <li>Published · IEEE ETCOM 2025</li>
+                </ul>
+              </section>
+          </template>
         </div>
 
-        <!-- Project 2 — Energy Prediction (Springer published, LSTM + RFE) -->
-        <div class="project" id="energy-prediction">
+        <!-- Project 6 — Energy Prediction (Springer published, LSTM + RFE) -->
+        <div class="project" id="energy-prediction" data-tags="ai-ml data-science">
           <div class="proj-media">
             <div class="img-slot">
               <img class="fit-contain" src="images/project-energy.png" alt="Energy consumption prediction">
             </div>
           </div>
           <div class="proj-body">
-            <div class="proj-num">Project 02</div>
+            <div class="proj-num">Project 06</div>
             <span class="badge">Published · Springer LNNS · ICTCS 2025</span>
             <h3>Multivariate Time-Series Energy Consumption Prediction</h3>
             <div class="proj-stack">Python · Keras · TensorFlow · LSTM · RFE · scikit-learn · pandas · NumPy</div>
@@ -350,17 +1045,50 @@
               <a href="https://link.springer.com/chapter/10.1007/978-3-032-20606-0_49" target="_blank" rel="noopener">Research paper →</a>
             </div>
           </div>
+          <div class="proj-gallery" hidden>
+            <img src="images/project-energy.png" alt="Multivariate Time-Series Energy Consumption Prediction — screenshot 1" loading="lazy" data-optional>
+            <img src="assets/projects/energy-prediction/2.png" alt="Multivariate Time-Series Energy Consumption Prediction — screenshot 2" loading="lazy" data-optional>
+            <img src="assets/projects/energy-prediction/3.png" alt="Multivariate Time-Series Energy Consumption Prediction — screenshot 3" loading="lazy" data-optional>
+            <img src="assets/projects/energy-prediction/4.png" alt="Multivariate Time-Series Energy Consumption Prediction — screenshot 4" loading="lazy" data-optional>
+            <img src="assets/projects/energy-prediction/5.png" alt="Multivariate Time-Series Energy Consumption Prediction — screenshot 5" loading="lazy" data-optional>
+          </div>
+          <template class="cs">
+              <section class="cs-slide">
+                <img data-optional src="images/project-energy.png" alt="Multivariate Time-Series Energy Consumption Prediction — overview" loading="lazy">
+                <div class="proj-num">01 — Overview</div>
+                <h4>Forecasting household energy use</h4>
+                <p>An RFE-LSTM forecasting pipeline on the UCI Household Electric Power Consumption dataset (35K hourly samples) — built for real-time smart-grid energy management.</p>
+              </section>
+              <section class="cs-slide">
+                <div class="proj-num">02 — How it works</div>
+                <h4>RFE feature selection + LSTM</h4>
+                <ul>
+                  <li>RFE-LSTM forecasting pipeline</li>
+                  <li>35K hourly samples from the UCI Household Electric Power Consumption dataset</li>
+                  <li>Python, Keras, TensorFlow, scikit-learn, pandas and NumPy</li>
+                </ul>
+              </section>
+              <section class="cs-slide">
+                <div class="proj-num">03 — Results &amp; links</div>
+                <h4>Lag features matter</h4>
+                <ul>
+                  <li>An ablation study identified lag features (1–3) as key signals</li>
+                  <li>Reduced MAE/RMSE by up to 7% versus the no-lag baseline</li>
+                  <li>Published · Springer LNNS · ICTCS 2025</li>
+                </ul>
+              </section>
+          </template>
         </div>
 
-        <!-- Project 3 — Siora2k5 (agentic AI, live demo, built two ways) -->
-        <div class="project" id="siora2k5">
+        <!-- Project 7 — Siora2k5 (agentic AI, live demo, built two ways) -->
+        <div class="project" id="siora2k5" data-tags="ai-ml nlp full-stack">
           <div class="proj-media">
             <div class="img-slot">
               <img class="fit-contain" src="images/project-siora.png" alt="Siora2k5 agentic AI research assistant">
             </div>
           </div>
           <div class="proj-body">
-            <div class="proj-num">Project 03</div>
+            <div class="proj-num">Project 07</div>
             <span class="badge">Agentic AI · Live Demo</span>
             <h3>Siora2k5 — Agentic AI Research Assistant</h3>
             <div class="proj-stack">Python · Claude API · LangGraph · FastAPI · Next.js · Tavily · ChromaDB</div>
@@ -370,17 +1098,50 @@
               <a href="https://research-agent-siora2k5.vercel.app" target="_blank" rel="noopener">Live demo →</a>
             </div>
           </div>
+          <div class="proj-gallery" hidden>
+            <img src="images/project-siora.png" alt="Siora2k5 — Agentic AI Research Assistant — screenshot 1" loading="lazy" data-optional>
+            <img src="assets/projects/siora2k5/2.png" alt="Siora2k5 — Agentic AI Research Assistant — screenshot 2" loading="lazy" data-optional>
+            <img src="assets/projects/siora2k5/3.png" alt="Siora2k5 — Agentic AI Research Assistant — screenshot 3" loading="lazy" data-optional>
+            <img src="assets/projects/siora2k5/4.png" alt="Siora2k5 — Agentic AI Research Assistant — screenshot 4" loading="lazy" data-optional>
+            <img src="assets/projects/siora2k5/5.png" alt="Siora2k5 — Agentic AI Research Assistant — screenshot 5" loading="lazy" data-optional>
+          </div>
+          <template class="cs">
+              <section class="cs-slide">
+                <img data-optional src="images/project-siora.png" alt="Siora2k5 — Agentic AI Research Assistant — overview" loading="lazy">
+                <div class="proj-num">01 — Overview</div>
+                <h4>An agent that picks its own tools</h4>
+                <p>An AI agent that autonomously selects and chains tools — web search, calculator, document RAG, and image vision — to answer multi-step questions.</p>
+              </section>
+              <section class="cs-slide">
+                <div class="proj-num">02 — How it works</div>
+                <h4>Built two ways</h4>
+                <ul>
+                  <li>From scratch, to understand the agentic loop mechanics</li>
+                  <li>With LangGraph, for the production pattern</li>
+                  <li>Claude API, Tavily, ChromaDB</li>
+                </ul>
+              </section>
+              <section class="cs-slide">
+                <div class="proj-num">03 — Results &amp; links</div>
+                <h4>Measured and deployed</h4>
+                <ul>
+                  <li>100% tool-selection accuracy on the evaluation harness</li>
+                  <li>FastAPI backend deployed on Render</li>
+                  <li>Next.js chat UI on Vercel</li>
+                </ul>
+              </section>
+          </template>
         </div>
 
-        <!-- Project 4 — ExplainAI (medical DL, 112K images, Grad-CAM, 0.83 AUC) -->
-        <div class="project" id="explainai">
+        <!-- Project 8 — ExplainAI (medical DL, 112K images, Grad-CAM, 0.83 AUC) -->
+        <div class="project" id="explainai" data-tags="ai-ml computer-vision">
           <div class="proj-media">
             <div class="img-slot">
               <img src="images/project-xray.png" alt="Chest X-ray diagnosis">
             </div>
           </div>
           <div class="proj-body">
-            <div class="proj-num">Project 04</div>
+            <div class="proj-num">Project 08</div>
             <span class="badge">Deep Learning · XAI</span>
             <h3>Explainable AI for Chest X-Ray Diagnosis</h3>
             <div class="proj-stack">Python · PyTorch · DenseNet121 · FastAPI · Grad-CAM · NumPy</div>
@@ -389,17 +1150,49 @@
               <a href="https://github.com/prischab/explainai" target="_blank" rel="noopener">GitHub →</a>
             </div>
           </div>
+          <div class="proj-gallery" hidden>
+            <img src="images/project-xray.png" alt="Explainable AI for Chest X-Ray Diagnosis — screenshot 1" loading="lazy" data-optional>
+            <img src="assets/projects/explainai/2.png" alt="Explainable AI for Chest X-Ray Diagnosis — screenshot 2" loading="lazy" data-optional>
+            <img src="assets/projects/explainai/3.png" alt="Explainable AI for Chest X-Ray Diagnosis — screenshot 3" loading="lazy" data-optional>
+            <img src="assets/projects/explainai/4.png" alt="Explainable AI for Chest X-Ray Diagnosis — screenshot 4" loading="lazy" data-optional>
+            <img src="assets/projects/explainai/5.png" alt="Explainable AI for Chest X-Ray Diagnosis — screenshot 5" loading="lazy" data-optional>
+          </div>
+          <template class="cs">
+              <section class="cs-slide">
+                <img data-optional src="images/project-xray.png" alt="Explainable AI for Chest X-Ray Diagnosis — overview" loading="lazy">
+                <div class="proj-num">01 — Overview</div>
+                <h4>Explainable chest X-ray diagnosis</h4>
+                <p>A multi-label DenseNet121 classifier on the NIH ChestX-ray14 dataset — 112K images, 14 labels.</p>
+              </section>
+              <section class="cs-slide">
+                <div class="proj-num">02 — How it works</div>
+                <h4>No leakage, visible reasoning</h4>
+                <ul>
+                  <li>Multi-label DenseNet121 in PyTorch</li>
+                  <li>Patient-level stratification to avoid leakage</li>
+                  <li>Deployed via a FastAPI endpoint with a Grad-CAM web UI</li>
+                </ul>
+              </section>
+              <section class="cs-slide">
+                <div class="proj-num">03 — Results &amp; links</div>
+                <h4>0.83 macro-AUC</h4>
+                <ul>
+                  <li>Reaches 0.83 macro-AUC</li>
+                  <li>The Grad-CAM UI lets non-technical users visualize predictions</li>
+                </ul>
+              </section>
+          </template>
         </div>
 
-        <!-- Project 5 — MedGuide RAG (grounded citations, refuses to hallucinate) -->
-        <div class="project" id="medguide">
+        <!-- Project 9 — MedGuide RAG (grounded citations, refuses to hallucinate) -->
+        <div class="project" id="medguide" data-tags="ai-ml nlp">
           <div class="proj-media">
             <div class="img-slot">
               <img class="fit-contain" src="images/project-medguide.png" alt="MedGuide clinical guideline RAG assistant">
             </div>
           </div>
           <div class="proj-body">
-            <div class="proj-num">Project 05</div>
+            <div class="proj-num">Project 09</div>
             <span class="badge">RAG · NLP</span>
             <h3>MedGuide — Clinical Guideline RAG Assistant</h3>
             <div class="proj-stack">Python · ChromaDB · sentence-transformers · FastAPI · Claude API</div>
@@ -408,74 +1201,49 @@
               <a href="https://github.com/prischab/medguide-rag" target="_blank" rel="noopener">GitHub →</a>
             </div>
           </div>
+          <div class="proj-gallery" hidden>
+            <img src="images/project-medguide.png" alt="MedGuide — Clinical Guideline RAG Assistant — screenshot 1" loading="lazy" data-optional>
+            <img src="assets/projects/medguide/2.png" alt="MedGuide — Clinical Guideline RAG Assistant — screenshot 2" loading="lazy" data-optional>
+            <img src="assets/projects/medguide/3.png" alt="MedGuide — Clinical Guideline RAG Assistant — screenshot 3" loading="lazy" data-optional>
+            <img src="assets/projects/medguide/4.png" alt="MedGuide — Clinical Guideline RAG Assistant — screenshot 4" loading="lazy" data-optional>
+            <img src="assets/projects/medguide/5.png" alt="MedGuide — Clinical Guideline RAG Assistant — screenshot 5" loading="lazy" data-optional>
+          </div>
+          <template class="cs">
+              <section class="cs-slide">
+                <img data-optional src="images/project-medguide.png" alt="MedGuide — Clinical Guideline RAG Assistant — overview" loading="lazy">
+                <div class="proj-num">01 — Overview</div>
+                <h4>Clinical answers, grounded in WHO guidelines</h4>
+                <p>A retrieval-augmented generation system that answers clinical questions grounded in WHO guideline PDFs.</p>
+              </section>
+              <section class="cs-slide">
+                <div class="proj-num">02 — How it works</div>
+                <h4>Retrieve, then answer only from sources</h4>
+                <ul>
+                  <li>Retrieves the most relevant passages via vector search (ChromaDB + sentence-transformers)</li>
+                  <li>Instructs the LLM (Claude API) to answer only from those sources</li>
+                  <li>FastAPI backend</li>
+                </ul>
+              </section>
+              <section class="cs-slide">
+                <div class="proj-num">03 — Results &amp; links</div>
+                <h4>Cites its sources, admits gaps</h4>
+                <ul>
+                  <li>Inline citations — document + page number</li>
+                  <li>When the corpus doesn't cover a question, it says so rather than guessing</li>
+                </ul>
+              </section>
+          </template>
         </div>
 
-        <!-- Project 6 — Archive 2k5 (full-stack e-commerce, custom payment flow) -->
-        <div class="project" id="archive-2k5">
-          <div class="proj-media">
-            <div class="img-slot">
-              <img class="fit-contain" src="images/project-archive.png" alt="Archive 2k5 thrift store with UPI QR checkout">
-            </div>
-          </div>
-          <div class="proj-body">
-            <div class="proj-num">Project 06</div>
-            <span class="badge">Full-Stack · E-Commerce</span>
-            <h3>Archive 2k5 — Thrift Store with UPI QR Checkout</h3>
-            <div class="proj-stack">Next.js · Prisma · SQLite · PostgreSQL · Clerk · TypeScript</div>
-            <p>A full-stack thrift store template with an admin dashboard and a custom UPI QR checkout flow: items are reserved on checkout, buyers pay via any UPI app, and the admin confirms receipt — zero payment gateway fees. A complete Razorpay integration is built in but dormant; switching to automated payment verification requires one environment variable change.</p>
-            <div class="proj-links">
-              <a href="https://github.com/prischab/Archive-2k5" target="_blank" rel="noopener">GitHub →</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 7 — Credit Risk Analysis (150K borrowers, ROC-AUC 0.84) -->
-        <div class="project" id="credit-risk">
-          <div class="proj-media">
-            <div class="img-slot">
-              <img class="fit-contain" src="images/project-credit.png" alt="Credit risk analysis predicting loan default">
-            </div>
-          </div>
-          <div class="proj-body">
-            <div class="proj-num">Project 07</div>
-            <span class="badge">Data Science · ML</span>
-            <h3>Credit Risk Analysis — Predicting Loan Default</h3>
-            <div class="proj-stack">Python · scikit-learn · pandas · NumPy · Logistic Regression · Random Forest · matplotlib · seaborn</div>
-            <p>End-to-end credit risk analysis on 150,000 borrowers from the "Give Me Some Credit" dataset. Rigorous EDA on a highly imbalanced target (6.7% default rate), followed by a head-to-head model comparison using ROC-AUC (0.84), precision, and recall. Key finding: credit utilization is the top default driver — but only a non-linear model (Random Forest, feature importance 0.27) reveals it; its linear correlation with the target is near zero.</p>
-            <div class="proj-links">
-              <a href="https://github.com/prischab/credit-risk-analysis" target="_blank" rel="noopener">GitHub →</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 8 — Heart Disease MLOps (Docker + CI/CD + FastAPI) -->
-        <div class="project" id="heart-disease-mlops">
-          <div class="proj-media">
-            <div class="img-slot">
-              <img class="fit-contain" src="images/project-mlops.png" alt="Heart disease predictor MLOps pipeline">
-            </div>
-          </div>
-          <div class="proj-body">
-            <div class="proj-num">Project 08</div>
-            <span class="badge">MLOps · CI/CD</span>
-            <h3>Heart Disease Predictor — End-to-End MLOps Pipeline</h3>
-            <div class="proj-stack">Python · FastAPI · Docker · GitHub Actions · scikit-learn · pytest</div>
-            <p>A production ML engineering demo: a RandomForest classifier trained on the UCI Heart Disease dataset, served through a REST API, containerized with Docker, and automatically tested and rebuilt on every push via GitHub Actions CI/CD. The model is intentionally simple — the focus is the reproducible, portable infrastructure around it.</p>
-            <div class="proj-links">
-              <a href="https://github.com/prischab/heart-disease-mlops" target="_blank" rel="noopener">GitHub →</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 9 — JobAI (live AI mobile app) -->
-        <div class="project" id="jobai">
+        <!-- Project 10 — JobAI (live AI mobile app) -->
+        <div class="project" id="jobai" data-tags="ai-ml full-stack">
           <div class="proj-media">
             <div class="img-slot">
               <img class="fit-contain" src="images/project-jobai.png" alt="JobAI mobile app">
             </div>
           </div>
           <div class="proj-body">
-            <div class="proj-num">Project 09</div>
+            <div class="proj-num">Project 10</div>
             <span class="badge">AI · Mobile App · Career Tech</span>
             <h3>JobAI — Your AI Career Copilot</h3>
             <div class="proj-stack">React Native · Expo · TypeScript · Express 5 · Anthropic Claude · PostgreSQL · Drizzle ORM · pnpm</div>
@@ -485,52 +1253,192 @@
               <a href="https://job-ai--prischabajeli2k.replit.app/" target="_blank" rel="noopener">Live app →</a>
             </div>
           </div>
+          <div class="proj-gallery" hidden>
+            <img src="images/project-jobai.png" alt="JobAI — Your AI Career Copilot — screenshot 1" loading="lazy" data-optional>
+            <img src="assets/projects/jobai/2.png" alt="JobAI — Your AI Career Copilot — screenshot 2" loading="lazy" data-optional>
+            <img src="assets/projects/jobai/3.png" alt="JobAI — Your AI Career Copilot — screenshot 3" loading="lazy" data-optional>
+            <img src="assets/projects/jobai/4.png" alt="JobAI — Your AI Career Copilot — screenshot 4" loading="lazy" data-optional>
+            <img src="assets/projects/jobai/5.png" alt="JobAI — Your AI Career Copilot — screenshot 5" loading="lazy" data-optional>
+          </div>
+          <template class="cs">
+              <section class="cs-slide">
+                <img data-optional src="images/project-jobai.png" alt="JobAI — Your AI Career Copilot — overview" loading="lazy">
+                <div class="proj-num">01 — Overview</div>
+                <h4>Your AI career copilot</h4>
+                <p>An AI-powered mobile app that helps users through the job search.</p>
+              </section>
+              <section class="cs-slide">
+                <div class="proj-num">02 — How it works</div>
+                <h4>Five tools in one app</h4>
+                <ul>
+                  <li>Optimizes resumes for ATS compatibility</li>
+                  <li>Generates tailored cover letters</li>
+                  <li>Plans job-search strategy and drafts cold outreach emails</li>
+                  <li>React Native, Expo, TypeScript, Express 5, Anthropic Claude, PostgreSQL and Drizzle ORM</li>
+                </ul>
+              </section>
+              <section class="cs-slide">
+                <div class="proj-num">03 — Results &amp; links</div>
+                <h4>Track every application</h4>
+                <p>Tracks applications across Applied, Interview, Offer, and Rejected stages.</p>
+              </section>
+          </template>
         </div>
 
-        <!-- Project 10 — Educational Math Game -->
-        <div class="project" id="math-game">
+        <!-- Project 11 — Archive 2k5 (full-stack e-commerce, custom payment flow) -->
+        <div class="project" id="archive-2k5" data-tags="full-stack">
           <div class="proj-media">
             <div class="img-slot">
-              <img class="fit-contain" src="images/project-mathgame.png" alt="Educational math game">
+              <img class="fit-contain" src="images/project-archive.png" alt="Archive 2k5 thrift store with UPI QR checkout">
             </div>
           </div>
-          <div class="proj-body">
-            <div class="proj-num">Project 10</div>
-            <span class="badge">UX · Education</span>
-            <h3>Educational Math Game for Children (Ages 5–10)</h3>
-            <div class="proj-stack">Next.js · React · TypeScript · CSS</div>
-            <p>An interactive math learning site with musical feedback designed to improve engagement and retention for young learners. Built around UX principles, with documented purpose, novelty, user flow, and feature sequencing.</p>
-            <div class="proj-links">
-              <a href="https://github.com/prischab/educational-math-website" target="_blank" rel="noopener">GitHub →</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 11 — University Club Dashboard -->
-        <div class="project text-only" id="club-dashboard">
           <div class="proj-body">
             <div class="proj-num">Project 11</div>
-            <span class="badge">Full-Stack · Database</span>
-            <h3>University Club Dashboard — Multi-Club Management System</h3>
-            <div class="proj-stack">Web technologies · MySQL · Flask · Relational DB</div>
-            <p>A database-linked admin dashboard that centralizes management of multiple university clubs — Acting, Music, Coding, and Robotics. Provides unified views for club details, budgets, activities, and competitions through a single interface for administrators.</p>
-          </div>
-        </div>
-
-        <!-- Project 12 — Primetrade (market sentiment analysis) -->
-        <div class="project text-only" id="primetrade">
-          <div class="proj-body">
-            <div class="proj-num">Project 12</div>
-            <span class="badge">Data Science · Market Analysis</span>
-            <h3>Trader Performance vs Market Sentiment — Primetrade Assignment</h3>
-            <div class="proj-stack">Python · pandas · NumPy · matplotlib · seaborn · scipy</div>
-            <p>Analysis of whether Bitcoin market sentiment (Fear &amp; Greed Index) predicts trader performance on Hyperliquid (~211K trades). Key finding: per-trade PnL does not differ significantly between Fear and Greed regimes (Welch p=0.69, Mann-Whitney p=0.53). The real signal is behavioural — average position size during Fear (~$7,180) is 57% larger than during Greed (~$4,570).</p>
+            <span class="badge">Full-Stack · E-Commerce</span>
+            <h3>Archive 2k5 — Thrift Store with UPI QR Checkout</h3>
+            <div class="proj-stack">Next.js · Prisma · SQLite · PostgreSQL · Clerk · TypeScript</div>
+            <p>A full-stack thrift store template with an admin dashboard and a custom UPI QR checkout flow: items are reserved on checkout, buyers pay via any UPI app, and the admin confirms receipt — zero payment gateway fees. A complete Razorpay integration is built in but dormant; switching to automated payment verification requires one environment variable change.</p>
             <div class="proj-links">
-              <a href="https://github.com/prischab/Primetrade-ds-assignment" target="_blank" rel="noopener">GitHub →</a>
+              <a href="https://github.com/prischab/Archive-2k5" target="_blank" rel="noopener">GitHub →</a>
             </div>
           </div>
+          <div class="proj-gallery" hidden>
+            <img src="images/project-archive.png" alt="Archive 2k5 — Thrift Store with UPI QR Checkout — screenshot 1" loading="lazy" data-optional>
+            <img src="assets/projects/archive-2k5/2.png" alt="Archive 2k5 — Thrift Store with UPI QR Checkout — screenshot 2" loading="lazy" data-optional>
+            <img src="assets/projects/archive-2k5/3.png" alt="Archive 2k5 — Thrift Store with UPI QR Checkout — screenshot 3" loading="lazy" data-optional>
+            <img src="assets/projects/archive-2k5/4.png" alt="Archive 2k5 — Thrift Store with UPI QR Checkout — screenshot 4" loading="lazy" data-optional>
+            <img src="assets/projects/archive-2k5/5.png" alt="Archive 2k5 — Thrift Store with UPI QR Checkout — screenshot 5" loading="lazy" data-optional>
+          </div>
+          <template class="cs">
+              <section class="cs-slide">
+                <img data-optional src="images/project-archive.png" alt="Archive 2k5 — Thrift Store with UPI QR Checkout — overview" loading="lazy">
+                <div class="proj-num">01 — Overview</div>
+                <h4>A thrift store with UPI QR checkout</h4>
+                <p>A full-stack thrift store template with an admin dashboard and a custom UPI QR checkout flow.</p>
+              </section>
+              <section class="cs-slide">
+                <div class="proj-num">02 — How it works</div>
+                <h4>Reserve, pay by UPI, confirm</h4>
+                <ul>
+                  <li>Items are reserved on checkout</li>
+                  <li>Buyers pay via any UPI app</li>
+                  <li>The admin confirms receipt</li>
+                  <li>Next.js, Prisma, SQLite/PostgreSQL, Clerk and TypeScript</li>
+                </ul>
+              </section>
+              <section class="cs-slide">
+                <div class="proj-num">03 — Results &amp; links</div>
+                <h4>Zero gateway fees</h4>
+                <ul>
+                  <li>Zero payment gateway fees</li>
+                  <li>A complete Razorpay integration is built in but dormant — switching to automated payment verification requires one environment variable change</li>
+                </ul>
+              </section>
+          </template>
         </div>
 
+        <!-- Project 12 — Credit Risk Analysis (150K borrowers, ROC-AUC 0.84) -->
+        <div class="project" id="credit-risk" data-tags="ai-ml data-science">
+          <div class="proj-media">
+            <div class="img-slot">
+              <img class="fit-contain" src="images/project-credit.png" alt="Credit risk analysis predicting loan default">
+            </div>
+          </div>
+          <div class="proj-body">
+            <div class="proj-num">Project 12</div>
+            <span class="badge">Data Science · ML</span>
+            <h3>Credit Risk Analysis — Predicting Loan Default</h3>
+            <div class="proj-stack">Python · scikit-learn · pandas · NumPy · Logistic Regression · Random Forest · matplotlib · seaborn</div>
+            <p>End-to-end credit risk analysis on 150,000 borrowers from the "Give Me Some Credit" dataset. Rigorous EDA on a highly imbalanced target (6.7% default rate), followed by a head-to-head model comparison using ROC-AUC (0.84), precision, and recall. Key finding: credit utilization is the top default driver — but only a non-linear model (Random Forest, feature importance 0.27) reveals it; its linear correlation with the target is near zero.</p>
+            <div class="proj-links">
+              <a href="https://github.com/prischab/credit-risk-analysis" target="_blank" rel="noopener">GitHub →</a>
+            </div>
+          </div>
+          <div class="proj-gallery" hidden>
+            <img src="images/project-credit.png" alt="Credit Risk Analysis — Predicting Loan Default — screenshot 1" loading="lazy" data-optional>
+            <img src="assets/projects/credit-risk/2.png" alt="Credit Risk Analysis — Predicting Loan Default — screenshot 2" loading="lazy" data-optional>
+            <img src="assets/projects/credit-risk/3.png" alt="Credit Risk Analysis — Predicting Loan Default — screenshot 3" loading="lazy" data-optional>
+            <img src="assets/projects/credit-risk/4.png" alt="Credit Risk Analysis — Predicting Loan Default — screenshot 4" loading="lazy" data-optional>
+            <img src="assets/projects/credit-risk/5.png" alt="Credit Risk Analysis — Predicting Loan Default — screenshot 5" loading="lazy" data-optional>
+          </div>
+          <template class="cs">
+              <section class="cs-slide">
+                <img data-optional src="images/project-credit.png" alt="Credit Risk Analysis — Predicting Loan Default — overview" loading="lazy">
+                <div class="proj-num">01 — Overview</div>
+                <h4>Predicting loan default</h4>
+                <p>End-to-end credit risk analysis on 150,000 borrowers from the “Give Me Some Credit” dataset.</p>
+              </section>
+              <section class="cs-slide">
+                <div class="proj-num">02 — How it works</div>
+                <h4>EDA, then a head-to-head</h4>
+                <ul>
+                  <li>Rigorous EDA on a highly imbalanced target (6.7% default rate)</li>
+                  <li>Head-to-head comparison of Logistic Regression and Random Forest</li>
+                  <li>Evaluated with ROC-AUC, precision and recall</li>
+                </ul>
+              </section>
+              <section class="cs-slide">
+                <div class="proj-num">03 — Results &amp; links</div>
+                <h4>What correlation misses</h4>
+                <ul>
+                  <li>ROC-AUC 0.84</li>
+                  <li>Credit utilization is the top default driver — but only the non-linear Random Forest (feature importance 0.27) reveals it</li>
+                  <li>Its linear correlation with the target is near zero</li>
+                </ul>
+              </section>
+          </template>
+        </div>
+
+        <!-- Project 13 — Heart Disease MLOps (Docker + CI/CD + FastAPI) -->
+        <div class="project" id="heart-disease-mlops" data-tags="ai-ml data-science">
+          <div class="proj-media">
+            <div class="img-slot">
+              <img class="fit-contain" src="images/project-mlops.png" alt="Heart disease predictor MLOps pipeline">
+            </div>
+          </div>
+          <div class="proj-body">
+            <div class="proj-num">Project 13</div>
+            <span class="badge">MLOps · CI/CD</span>
+            <h3>Heart Disease Predictor — End-to-End MLOps Pipeline</h3>
+            <div class="proj-stack">Python · FastAPI · Docker · GitHub Actions · scikit-learn · pytest</div>
+            <p>A production ML engineering demo: a RandomForest classifier trained on the UCI Heart Disease dataset, served through a REST API, containerized with Docker, and automatically tested and rebuilt on every push via GitHub Actions CI/CD. The model is intentionally simple — the focus is the reproducible, portable infrastructure around it.</p>
+            <div class="proj-links">
+              <a href="https://github.com/prischab/heart-disease-mlops" target="_blank" rel="noopener">GitHub →</a>
+            </div>
+          </div>
+          <div class="proj-gallery" hidden>
+            <img src="images/project-mlops.png" alt="Heart Disease Predictor — End-to-End MLOps Pipeline — screenshot 1" loading="lazy" data-optional>
+            <img src="assets/projects/heart-disease-mlops/2.png" alt="Heart Disease Predictor — End-to-End MLOps Pipeline — screenshot 2" loading="lazy" data-optional>
+            <img src="assets/projects/heart-disease-mlops/3.png" alt="Heart Disease Predictor — End-to-End MLOps Pipeline — screenshot 3" loading="lazy" data-optional>
+            <img src="assets/projects/heart-disease-mlops/4.png" alt="Heart Disease Predictor — End-to-End MLOps Pipeline — screenshot 4" loading="lazy" data-optional>
+            <img src="assets/projects/heart-disease-mlops/5.png" alt="Heart Disease Predictor — End-to-End MLOps Pipeline — screenshot 5" loading="lazy" data-optional>
+          </div>
+          <template class="cs">
+              <section class="cs-slide">
+                <img data-optional src="images/project-mlops.png" alt="Heart Disease Predictor — End-to-End MLOps Pipeline — overview" loading="lazy">
+                <div class="proj-num">01 — Overview</div>
+                <h4>The infrastructure is the point</h4>
+                <p>A production ML engineering demo. The model is intentionally simple — the focus is the reproducible, portable infrastructure around it.</p>
+              </section>
+              <section class="cs-slide">
+                <div class="proj-num">02 — How it works</div>
+                <h4>Model, API, container</h4>
+                <ul>
+                  <li>RandomForest classifier trained on the UCI Heart Disease dataset</li>
+                  <li>Served through a REST API (FastAPI)</li>
+                  <li>Containerized with Docker</li>
+                </ul>
+              </section>
+              <section class="cs-slide">
+                <div class="proj-num">03 — Results &amp; links</div>
+                <h4>Tested on every push</h4>
+                <ul>
+                  <li>Automatically tested and rebuilt on every push via GitHub Actions CI/CD</li>
+                  <li>Tests written with pytest</li>
+                </ul>
+              </section>
+          </template>
+        </div>
       </div>
     </div>
   </div>
@@ -548,5 +1456,6 @@
 </footer>
 
 <script src="site.js"></script>
+<script src="projects.js"></script>
 </body>
 </html>

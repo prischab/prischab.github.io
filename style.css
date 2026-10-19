@@ -323,6 +323,32 @@ footer::after {
   color: var(--bg-warm);
 }
 
+/* ---------- CURSOR FOLLOWER (star) ---------- */
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.cursor.is-on { opacity: 1; }
+.cursor span {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 12px;
+  height: 12px;
+  margin: -6px 0 0 -6px;
+  background: var(--ink);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  transition: transform 0.4s ease, background 0.3s ease;
+}
+/* over links, buttons and projects: grows a little and spins */
+.cursor.is-link span { transform: scale(1.8) rotate(72deg); }
+.cursor.is-light span { background: var(--bg); }
+
 @media (prefers-reduced-motion: reduce) {
   .ticker-track { animation: none; }
   .fade-in { animation: none; opacity: 1; }

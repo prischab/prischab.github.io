@@ -4,6 +4,15 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Experience — Prischa Bajeli</title>
+<meta name="description" content="Prischa Bajeli's AI / Web Development internship at Choice TechLab — speech &amp; NLP pipelines, voice AI, telemetry backends and a smart-city traffic simulation." />
+<meta property="og:title" content="Experience — Prischa Bajeli" />
+<meta property="og:description" content="Prischa Bajeli's AI / Web Development internship at Choice TechLab — speech &amp; NLP pipelines, voice AI, telemetry backends and a smart-city traffic simulation." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://prischab.github.io/experience.html" />
+<meta property="og:image" content="https://prischab.github.io/images/profile.jpg" />
+<meta name="twitter:card" content="summary" />
+<link rel="canonical" href="https://prischab.github.io/experience.html" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%236a0c06'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-weight='bold' font-size='38' fill='%23ece4d6'%3Ep.%3C/text%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400..800&amp;family=Space+Grotesk:wght@400..600&amp;display=swap" rel="stylesheet" />
@@ -141,6 +150,17 @@
     border: 1px solid var(--line);
     padding: 4px 9px;
   }
+  .ip-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
+  .ip-links a {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border: 1px solid var(--line);
+    padding: 9px 14px;
+    transition: background 0.25s, color 0.25s, border-color 0.25s;
+  }
+  .ip-links a:hover { background: var(--ink); border-color: var(--ink); color: var(--bg); }
   .ip-media { display: flex; flex-direction: column; gap: 14px; }
   .ip-media img { width: 100%; height: auto; display: block; border: 1px solid var(--line); background: var(--bg-warm); }
   .ip-other { margin-top: 40px; }
@@ -152,7 +172,7 @@
   <a href="index.html" class="logo" aria-label="Prischa Bajeli, home">prischa.</a>
   <div class="ticker" aria-hidden="true">
     <div class="ticker-track">
-      <span>Open to internships</span>
+      <span>Open to AI/ML, data &amp; software roles · 2027</span>
       <span>2 peer-reviewed papers · IEEE &amp; Springer</span>
       <span>AI &amp; Data Science · Class of 2027</span>
     </div>
@@ -193,7 +213,6 @@
             <div class="meta-item"><span class="k">Dates</span><span class="v">22 Jul 2026 – 22 Jan 2027</span></div>
             <div class="meta-item"><span class="k">Duration</span><span class="v">6 months</span></div>
             <div class="meta-item"><span class="k">Location</span><span class="v">Baner, Pune · On-site</span></div>
-            <div class="meta-item"><span class="k">Mentor</span><span class="v">Sanket Raut</span></div>
           </div>
           <div class="role-body">
             <div class="role-title">AI / Web Development Intern</div>
@@ -207,9 +226,110 @@
              missing images are hidden automatically (see site.js). -->
         <section class="ip-section">
           <h2 class="block-title">projects at choice techlab</h2>
+          <article class="ip-card" id="call-quality-analyzer">
+            <div class="ip-body">
+              <div class="ip-top"><span class="ip-num">01</span><span class="ip-status">Built end-to-end</span></div>
+              <h3>Call Quality Analyzer</h3>
+              <p class="ip-plain">Listens to recorded customer calls and automatically checks tone, rudeness, privacy leaks, and whether the agent said the required terms &amp; conditions.</p>
+              <ul class="ip-points">
+                <li>11-stage ML/NLP pipeline: transcription, diarization, sentiment/emotion, PII redaction, toxicity detection, T&amp;C compliance verification, and a conduct rubric</li>
+                <li>ASR: switched from Whisper to IndicConformer-600M after Whisper degenerated on 8 kHz Hinglish audio; auto-routes calls to faster-whisper (English) or IndicConformer (Hindi/Hinglish) by detected language</li>
+                <li>Compliance check via RAG + DeBERTa-NLI + Claude; PII redaction via Microsoft Presidio; sentiment via hing-roberta and emotion2vec+</li>
+                <li>Benchmarks: 18.5% DER (AMI corpus), 27.1% WER (IndicVoices Hindi); found Whisper mislabels Hindi as Urdu unless the language is forced</li>
+                <li>FastAPI backend + custom dashboard: upload audio/zip files, built-in audio player, per-call analysis</li>
+              </ul>
+              <div class="ip-stack"><span>Python</span><span>FastAPI</span><span>IndicConformer</span><span>faster-whisper</span><span>pyannote 3.1</span><span>Presidio</span><span>DeBERTa-NLI</span><span>hing-roberta</span><span>emotion2vec+</span><span>Claude API</span><span>HTML/JS</span></div>
+              <div class="ip-links"><a href="work.html#call-quality-analyzer-proj">View case study →</a></div>
+            </div>
+            <div class="ip-media">
+              <img src="assets/internship/call-quality-analyzer/ui-1.png" alt="Call Quality Analyzer — screenshot 1" loading="lazy" data-optional>
+              <img src="assets/internship/call-quality-analyzer/ui-2.png" alt="Call Quality Analyzer — screenshot 2" loading="lazy" data-optional>
+            </div>
+          </article>
+
+          <article class="ip-card" id="worklens">
+            <div class="ip-body">
+              <div class="ip-top"><span class="ip-num">02</span><span class="ip-status">Built · feature work ongoing</span></div>
+              <h3>Choice360 Worklens (WorkPulse)</h3>
+              <p class="ip-plain">A company app that runs on employees' computers and shows managers productivity stats and system health.</p>
+              <ul class="ip-points">
+                <li>Async FastAPI backend with 16+ agent APIs (enrollment, heartbeats, telemetry, system health, screenshot upload)</li>
+                <li>PostgreSQL with range-partitioned time-series tables; 20+ Alembic migrations</li>
+                <li>Cross-platform Python desktop agent (Linux/Windows/macOS): pluggable OS collectors, offline queue with retry/backfill, encrypted credentials, signed auto-update</li>
+                <li>JWT device auth, S3 presigned-URL screenshot uploads, admin dashboard, Gemini-generated per-device productivity summaries</li>
+                <li>38 pytest suites (AWS mocked with moto), Dockerized</li>
+              </ul>
+              <p class="ip-now"><span>Now</span>Making productivity scoring fair for off-desk teams like sales, and updating the macOS desktop agent.</p>
+              <div class="ip-stack"><span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>Alembic</span><span>AWS S3</span><span>Docker</span><span>pytest</span><span>moto</span><span>Gemini API</span></div>
+              <div class="ip-links"><a href="work.html#worklens-proj">View case study →</a></div>
+            </div>
+            <div class="ip-media">
+              <img src="assets/internship/worklens/ui-1.png" alt="Choice360 Worklens (WorkPulse) — screenshot 1" loading="lazy" data-optional>
+              <img src="assets/internship/worklens/ui-2.png" alt="Choice360 Worklens (WorkPulse) — screenshot 2" loading="lazy" data-optional>
+            </div>
+          </article>
+
+          <article class="ip-card" id="emergency-corridor">
+            <div class="ip-body">
+              <div class="ip-top"><span class="ip-num">03</span><span class="ip-status">In progress</span></div>
+              <h3>AI-Powered Emergency Corridor</h3>
+              <p class="ip-plain">A simulation of Pune traffic where an ambulance gets green lights ahead of it, police get alerted about jams, and the hospital gets ready before it arrives.</p>
+              <ul class="ip-points">
+                <li>Built for Pune 108 ambulances: traffic-signal pre-emption, police alerts for jams, hospital readiness checks</li>
+                <li>Traffic simulation of central Pune with SUMO + TraCI on OpenStreetMap data</li>
+                <li>Control-room, ambulance-crew, and admin screens with live updates over WebSockets</li>
+                <li>scikit-learn predictors, TomTom live traffic, Twilio alerts, Claude for reading emergency calls + "Ask AI"</li>
+              </ul>
+              <div class="ip-stack"><span>SUMO</span><span>TraCI</span><span>OpenStreetMap</span><span>FastAPI</span><span>WebSockets</span><span>PostgreSQL/PostGIS</span><span>scikit-learn</span><span>Claude API</span><span>TomTom</span><span>Twilio</span><span>React</span><span>Leaflet/MapLibre</span></div>
+              <div class="ip-links"><a href="work.html#emergency-corridor-proj">View case study →</a></div>
+            </div>
+            <div class="ip-media">
+              <img src="assets/internship/emergency-corridor/ui-1.png" alt="AI-Powered Emergency Corridor — screenshot 1" loading="lazy" data-optional>
+              <img src="assets/internship/emergency-corridor/ui-2.png" alt="AI-Powered Emergency Corridor — screenshot 2" loading="lazy" data-optional>
+            </div>
+          </article>
+
+          <article class="ip-card" id="vaani">
+            <div class="ip-body">
+              <div class="ip-top"><span class="ip-num">04</span><span class="ip-status">Built</span></div>
+              <h3>Vaani — Multilingual Voice Cloning</h3>
+              <p class="ip-plain">Give it a short voice sample and it speaks new text in that voice — in English and 11 Indian languages.</p>
+              <ul class="ip-points">
+                <li>FastAPI voice-cloning microservice on Chatterbox Multilingual TTS; IndicF5 added for 11 Indic languages</li>
+                <li>Routes English to Chatterbox in-process and Indic languages to IndicF5 over HTTP (separate service, port 8001, to isolate dependency conflicts)</li>
+                <li>Indian-context text normalization, Hinglish transliteration module, Postgres-backed voice profiles</li>
+                <li>Self-verifying synthesis loop: checks output with faster-whisper WER + Resemblyzer speaker similarity</li>
+              </ul>
+              <div class="ip-stack"><span>Python</span><span>FastAPI</span><span>Chatterbox TTS</span><span>IndicF5</span><span>faster-whisper</span><span>Resemblyzer</span><span>PostgreSQL</span></div>
+              <div class="ip-links"><a href="work.html#vaani-proj">View case study →</a></div>
+            </div>
+            <div class="ip-media">
+              <img src="assets/internship/vaani/ui-1.png" alt="Vaani — Multilingual Voice Cloning — screenshot 1" loading="lazy" data-optional>
+              <img src="assets/internship/vaani/ui-2.png" alt="Vaani — Multilingual Voice Cloning — screenshot 2" loading="lazy" data-optional>
+            </div>
+          </article>
+
+          <article class="ip-card" id="hrms-recruitment">
+            <div class="ip-body">
+              <div class="ip-top"><span class="ip-num">05</span><span class="ip-status">Built · presented to mentor</span></div>
+              <h3>HRMS Recruitment Backend</h3>
+              <p class="ip-plain">A hiring system that reads resumes with AI and helps recruiters move candidates along.</p>
+              <ul class="ip-points">
+                <li>FastAPI + PostgreSQL backend with a queue-based async processing pipeline</li>
+                <li>AI-assisted resume parsing</li>
+                <li>React UI with a suggestion-chip interaction pattern</li>
+              </ul>
+              <div class="ip-stack"><span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>React</span></div>
+            </div>
+            <div class="ip-media">
+              <img src="assets/internship/hrms-recruitment/ui-1.png" alt="HRMS Recruitment Backend — screenshot 1" loading="lazy" data-optional>
+              <img src="assets/internship/hrms-recruitment/ui-2.png" alt="HRMS Recruitment Backend — screenshot 2" loading="lazy" data-optional>
+            </div>
+          </article>
+
           <article class="ip-card" id="zero-shot-detection">
             <div class="ip-body">
-              <div class="ip-top"><span class="ip-num">01</span><span class="ip-status">Research / evaluation</span></div>
+              <div class="ip-top"><span class="ip-num">06</span><span class="ip-status">Research / evaluation</span></div>
               <h3>Zero-Shot Object Detection Comparison</h3>
               <p class="ip-plain">Tested whether AI can spot items in a fruit-stall photo without being trained on those items — to auto-verify a vendor's assets.</p>
               <ul class="ip-points">
@@ -226,69 +346,9 @@
             </div>
           </article>
 
-          <article class="ip-card" id="call-quality-analyzer">
-            <div class="ip-body">
-              <div class="ip-top"><span class="ip-num">02</span><span class="ip-status">Built end-to-end</span></div>
-              <h3>Call Quality Analyzer</h3>
-              <p class="ip-plain">Listens to recorded customer calls and automatically checks tone, rudeness, privacy leaks, and whether the agent said the required terms &amp; conditions.</p>
-              <ul class="ip-points">
-                <li>11-stage ML/NLP pipeline: transcription, diarization, sentiment/emotion, PII redaction, toxicity detection, T&amp;C compliance verification, and a conduct rubric</li>
-                <li>ASR: switched from Whisper to IndicConformer-600M after Whisper degenerated on 8 kHz Hinglish audio; auto-routes calls to faster-whisper (English) or IndicConformer (Hindi/Hinglish) by detected language</li>
-                <li>Compliance check via RAG + DeBERTa-NLI + Claude; PII redaction via Microsoft Presidio; sentiment via hing-roberta and emotion2vec+</li>
-                <li>Benchmarks: 18.5% DER (AMI corpus), 27.1% WER (IndicVoices Hindi); found Whisper mislabels Hindi as Urdu unless the language is forced</li>
-                <li>FastAPI backend + custom dashboard: upload audio/zip files, built-in audio player, per-call analysis</li>
-              </ul>
-              <div class="ip-stack"><span>Python</span><span>FastAPI</span><span>IndicConformer</span><span>faster-whisper</span><span>pyannote 3.1</span><span>Presidio</span><span>DeBERTa-NLI</span><span>hing-roberta</span><span>emotion2vec+</span><span>Claude API</span><span>HTML/JS</span></div>
-            </div>
-            <div class="ip-media">
-              <img src="assets/internship/call-quality-analyzer/ui-1.png" alt="Call Quality Analyzer — screenshot 1" loading="lazy" data-optional>
-              <img src="assets/internship/call-quality-analyzer/ui-2.png" alt="Call Quality Analyzer — screenshot 2" loading="lazy" data-optional>
-            </div>
-          </article>
-
-          <article class="ip-card" id="worklens">
-            <div class="ip-body">
-              <div class="ip-top"><span class="ip-num">03</span><span class="ip-status">Built · feature work ongoing</span></div>
-              <h3>Choice360 Worklens (WorkPulse)</h3>
-              <p class="ip-plain">A company app that runs on employees' computers and shows managers productivity stats and system health.</p>
-              <ul class="ip-points">
-                <li>Async FastAPI backend with 16+ agent APIs (enrollment, heartbeats, telemetry, system health, screenshot upload)</li>
-                <li>PostgreSQL with range-partitioned time-series tables; 20+ Alembic migrations</li>
-                <li>Cross-platform Python desktop agent (Linux/Windows/macOS): pluggable OS collectors, offline queue with retry/backfill, encrypted credentials, signed auto-update</li>
-                <li>JWT device auth, S3 presigned-URL screenshot uploads, admin dashboard, Gemini-generated per-device productivity summaries</li>
-                <li>38 pytest suites (AWS mocked with moto), Dockerized</li>
-              </ul>
-              <p class="ip-now"><span>Now</span>Making productivity scoring fair for off-desk teams like sales.</p>
-              <div class="ip-stack"><span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>Alembic</span><span>AWS S3</span><span>Docker</span><span>pytest</span><span>moto</span><span>Gemini API</span></div>
-            </div>
-            <div class="ip-media">
-              <img src="assets/internship/worklens/ui-1.png" alt="Choice360 Worklens (WorkPulse) — screenshot 1" loading="lazy" data-optional>
-              <img src="assets/internship/worklens/ui-2.png" alt="Choice360 Worklens (WorkPulse) — screenshot 2" loading="lazy" data-optional>
-            </div>
-          </article>
-
-          <article class="ip-card" id="emergency-corridor">
-            <div class="ip-body">
-              <div class="ip-top"><span class="ip-num">04</span><span class="ip-status">In progress</span></div>
-              <h3>AI-Powered Emergency Corridor</h3>
-              <p class="ip-plain">A simulation of Pune traffic where an ambulance gets green lights ahead of it, police get alerted about jams, and the hospital gets ready before it arrives.</p>
-              <ul class="ip-points">
-                <li>Built for Pune 108 ambulances: traffic-signal pre-emption, police alerts for jams, hospital readiness checks</li>
-                <li>Traffic simulation of central Pune with SUMO + TraCI on OpenStreetMap data</li>
-                <li>Control-room, ambulance-crew, and admin screens with live updates over WebSockets</li>
-                <li>scikit-learn predictors, TomTom live traffic, Twilio alerts, Claude for reading emergency calls + "Ask AI"</li>
-              </ul>
-              <div class="ip-stack"><span>SUMO</span><span>TraCI</span><span>OpenStreetMap</span><span>FastAPI</span><span>WebSockets</span><span>PostgreSQL/PostGIS</span><span>scikit-learn</span><span>Claude API</span><span>TomTom</span><span>Twilio</span><span>React</span><span>Leaflet/MapLibre</span></div>
-            </div>
-            <div class="ip-media">
-              <img src="assets/internship/emergency-corridor/ui-1.png" alt="AI-Powered Emergency Corridor — screenshot 1" loading="lazy" data-optional>
-              <img src="assets/internship/emergency-corridor/ui-2.png" alt="AI-Powered Emergency Corridor — screenshot 2" loading="lazy" data-optional>
-            </div>
-          </article>
-
           <article class="ip-card" id="digital-ilac">
             <div class="ip-body">
-              <div class="ip-top"><span class="ip-num">05</span><span class="ip-status">Prototype for tender demo</span></div>
+              <div class="ip-top"><span class="ip-num">07</span><span class="ip-status">Prototype for tender demo</span></div>
               <h3>Digital ILAC — Tender Prototype (APBOCWWB)</h3>
               <p class="ip-plain">A working demo built for a government tender my team bid on.</p>
               <ul class="ip-points">
@@ -303,61 +363,7 @@
             </div>
           </article>
 
-          <article class="ip-card" id="vaani">
-            <div class="ip-body">
-              <div class="ip-top"><span class="ip-num">06</span><span class="ip-status">Built</span></div>
-              <h3>Vaani — Multilingual Voice Cloning</h3>
-              <p class="ip-plain">Give it a short voice sample and it speaks new text in that voice — in English and 11 Indian languages.</p>
-              <ul class="ip-points">
-                <li>FastAPI voice-cloning microservice on Chatterbox Multilingual TTS; IndicF5 added for 11 Indic languages</li>
-                <li>Routes English to Chatterbox in-process and Indic languages to IndicF5 over HTTP (separate service, port 8001, to isolate dependency conflicts)</li>
-                <li>Indian-context text normalization, Hinglish transliteration module, Postgres-backed voice profiles</li>
-                <li>Self-verifying synthesis loop: checks output with faster-whisper WER + Resemblyzer speaker similarity</li>
-              </ul>
-              <div class="ip-stack"><span>Python</span><span>FastAPI</span><span>Chatterbox TTS</span><span>IndicF5</span><span>faster-whisper</span><span>Resemblyzer</span><span>PostgreSQL</span></div>
-            </div>
-            <div class="ip-media">
-              <img src="assets/internship/vaani/ui-1.png" alt="Vaani — Multilingual Voice Cloning — screenshot 1" loading="lazy" data-optional>
-              <img src="assets/internship/vaani/ui-2.png" alt="Vaani — Multilingual Voice Cloning — screenshot 2" loading="lazy" data-optional>
-            </div>
-          </article>
-
-          <article class="ip-card" id="hrms-recruitment">
-            <div class="ip-body">
-              <div class="ip-top"><span class="ip-num">07</span><span class="ip-status">Built · presented to mentor</span></div>
-              <h3>HRMS Recruitment Backend</h3>
-              <p class="ip-plain">A hiring system that reads resumes with AI and helps recruiters move candidates along.</p>
-              <ul class="ip-points">
-                <li>FastAPI + PostgreSQL backend with a queue-based async processing pipeline</li>
-                <li>AI-assisted resume parsing</li>
-                <li>React UI with a suggestion-chip interaction pattern</li>
-              </ul>
-              <div class="ip-stack"><span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>React</span></div>
-            </div>
-            <div class="ip-media">
-              <img src="assets/internship/hrms-recruitment/ui-1.png" alt="HRMS Recruitment Backend — screenshot 1" loading="lazy" data-optional>
-              <img src="assets/internship/hrms-recruitment/ui-2.png" alt="HRMS Recruitment Backend — screenshot 2" loading="lazy" data-optional>
-            </div>
-          </article>
-
-          <article class="ip-card" id="marathi-translator">
-            <div class="ip-body">
-              <div class="ip-top"><span class="ip-num">08</span><span class="ip-status">Scoped / design</span></div>
-              <h3>Handwritten Marathi Document Translator</h3>
-              <p class="ip-plain">Turns photos of handwritten Marathi documents into English text.</p>
-              <ul class="ip-points">
-                <li>Designed a 4-stage pipeline: input normalization → OCR → translation → output rendering</li>
-                <li>Evaluated vision-language models for handwritten Devanagari OCR; identified hallucination as the main reliability risk</li>
-              </ul>
-              <div class="ip-stack"><span>Python</span><span>vision-language models</span></div>
-            </div>
-            <div class="ip-media">
-              <img src="assets/internship/marathi-translator/ui-1.png" alt="Handwritten Marathi Document Translator — screenshot 1" loading="lazy" data-optional>
-              <img src="assets/internship/marathi-translator/ui-2.png" alt="Handwritten Marathi Document Translator — screenshot 2" loading="lazy" data-optional>
-            </div>
-          </article>
-
-          <p class="ip-other"><span>Other work</span>POC documents and model benchmarking for internal projects; documentation on fine-tuning pre-trained models on custom data.</p>
+          <p class="ip-other"><span>Other work</span>Scoped a handwritten Marathi document translator (VLM-based OCR → translation); POC documents and model benchmarking for internal projects; documentation on fine-tuning pre-trained models on custom data.</p>
         </section>
 
       </div>
