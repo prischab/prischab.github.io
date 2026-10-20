@@ -298,7 +298,7 @@ footer {
   padding: 32px 0 0;
   overflow: hidden;
 }
-footer .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+footer .wrap { position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
 footer .copy { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.7; }
 footer .foot-links { display: flex; gap: 28px; }
 footer .foot-links a {
@@ -310,8 +310,9 @@ footer .foot-links a {
 }
 footer .foot-links a:hover { opacity: 0.6; }
 footer::after {
-  content: "prischa.";
+  content: "prischa";
   display: block;
+  pointer-events: none; /* the giant wordmark overlaps the link row above it */
   font-family: var(--display);
   font-weight: 700;
   font-size: 27vw;

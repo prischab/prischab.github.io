@@ -102,6 +102,17 @@
   @media (max-width: 820px) { .ip-card, .ip-card:not(:has(.ip-media img)) { grid-template-columns: 1fr; gap: 24px; padding: 36px 0; } }
   .ip-top { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 14px; }
   .ip-num { font-size: 12px; font-weight: 600; letter-spacing: 0.2em; }
+  .role-status {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 3px 9px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    color: var(--bg);
+    background: var(--ink);
+    vertical-align: 1px;
+  }
   .ip-status {
     font-size: 11px;
     font-weight: 500;
@@ -169,7 +180,7 @@
 <body>
 
 <header class="topbar">
-  <a href="index.html" class="logo" aria-label="Prischa Bajeli, home">prischa.</a>
+  <a href="index.html" class="logo" aria-label="Prischa Bajeli, home">prischa</a>
   <div class="ticker" aria-hidden="true">
     <div class="ticker-track">
       <span>Open to AI/ML, data &amp; software roles · 2027</span>
@@ -215,7 +226,7 @@
             <div class="meta-item"><span class="k">Location</span><span class="v">Baner, Pune · On-site</span></div>
           </div>
           <div class="role-body">
-            <div class="role-title">AI / Web Development Intern</div>
+            <div class="role-title">AI / Web Development Intern <span class="role-status">Ongoing</span></div>
             <a class="company" href="https://choicetechlab.com/" target="_blank" rel="noopener">Choice TechLab<sup>↗</sup></a>
             <p class="role-lead">Built AI/ML prototypes and backend systems across computer vision, speech/NLP, voice AI, telemetry, and smart-city simulation.</p>
             <p>Choice TechLab is a technology consulting and digital transformation firm working across AI &amp; analytics, system integration, cybersecurity, and government tech.</p>
@@ -239,7 +250,7 @@
                 <li>FastAPI backend + custom dashboard: upload audio/zip files, built-in audio player, per-call analysis</li>
               </ul>
               <div class="ip-stack"><span>Python</span><span>FastAPI</span><span>IndicConformer</span><span>faster-whisper</span><span>pyannote 3.1</span><span>Presidio</span><span>DeBERTa-NLI</span><span>hing-roberta</span><span>emotion2vec+</span><span>Claude API</span><span>HTML/JS</span></div>
-              <div class="ip-links"><a href="work.html#call-quality-analyzer-proj">View case study →</a></div>
+              <div class="ip-links"><a href="work.html#call-quality-analyzer-proj">Learn more →</a></div>
             </div>
             <div class="ip-media">
               <img src="assets/internship/call-quality-analyzer/ui-1.png" alt="Call Quality Analyzer — screenshot 1" loading="lazy" data-optional>
@@ -250,7 +261,7 @@
           <article class="ip-card" id="worklens">
             <div class="ip-body">
               <div class="ip-top"><span class="ip-num">02</span><span class="ip-status">Built · feature work ongoing</span></div>
-              <h3>Choice360 Worklens (WorkPulse)</h3>
+              <h3>Choice360</h3>
               <p class="ip-plain">A company app that runs on employees' computers and shows managers productivity stats and system health.</p>
               <ul class="ip-points">
                 <li>Async FastAPI backend with 16+ agent APIs (enrollment, heartbeats, telemetry, system health, screenshot upload)</li>
@@ -261,17 +272,17 @@
               </ul>
               <p class="ip-now"><span>Now</span>Making productivity scoring fair for off-desk teams like sales, and updating the macOS desktop agent.</p>
               <div class="ip-stack"><span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>Alembic</span><span>AWS S3</span><span>Docker</span><span>pytest</span><span>moto</span><span>Gemini API</span></div>
-              <div class="ip-links"><a href="work.html#worklens-proj">View case study →</a></div>
+              <div class="ip-links"><a href="work.html#worklens-proj">Learn more →</a></div>
             </div>
             <div class="ip-media">
-              <img src="assets/internship/worklens/ui-1.png" alt="Choice360 Worklens (WorkPulse) — screenshot 1" loading="lazy" data-optional>
-              <img src="assets/internship/worklens/ui-2.png" alt="Choice360 Worklens (WorkPulse) — screenshot 2" loading="lazy" data-optional>
+              <img src="assets/internship/worklens/ui-1.png" alt="Choice360 — screenshot 1" loading="lazy" data-optional>
+              <img src="assets/internship/worklens/ui-2.png" alt="Choice360 — screenshot 2" loading="lazy" data-optional>
             </div>
           </article>
 
           <article class="ip-card" id="emergency-corridor">
             <div class="ip-body">
-              <div class="ip-top"><span class="ip-num">03</span><span class="ip-status">In progress</span></div>
+              <div class="ip-top"><span class="ip-num">03</span></div>
               <h3>AI-Powered Emergency Corridor</h3>
               <p class="ip-plain">A simulation of Pune traffic where an ambulance gets green lights ahead of it, police get alerted about jams, and the hospital gets ready before it arrives.</p>
               <ul class="ip-points">
@@ -281,7 +292,7 @@
                 <li>scikit-learn predictors, TomTom live traffic, Twilio alerts, Claude for reading emergency calls + "Ask AI"</li>
               </ul>
               <div class="ip-stack"><span>SUMO</span><span>TraCI</span><span>OpenStreetMap</span><span>FastAPI</span><span>WebSockets</span><span>PostgreSQL/PostGIS</span><span>scikit-learn</span><span>Claude API</span><span>TomTom</span><span>Twilio</span><span>React</span><span>Leaflet/MapLibre</span></div>
-              <div class="ip-links"><a href="work.html#emergency-corridor-proj">View case study →</a></div>
+              <div class="ip-links"><a href="work.html#emergency-corridor-proj">Learn more →</a></div>
             </div>
             <div class="ip-media">
               <img src="assets/internship/emergency-corridor/ui-1.png" alt="AI-Powered Emergency Corridor — screenshot 1" loading="lazy" data-optional>
@@ -301,7 +312,7 @@
                 <li>Self-verifying synthesis loop: checks output with faster-whisper WER + Resemblyzer speaker similarity</li>
               </ul>
               <div class="ip-stack"><span>Python</span><span>FastAPI</span><span>Chatterbox TTS</span><span>IndicF5</span><span>faster-whisper</span><span>Resemblyzer</span><span>PostgreSQL</span></div>
-              <div class="ip-links"><a href="work.html#vaani-proj">View case study →</a></div>
+              <div class="ip-links"><a href="work.html#vaani-proj">Learn more →</a></div>
             </div>
             <div class="ip-media">
               <img src="assets/internship/vaani/ui-1.png" alt="Vaani — Multilingual Voice Cloning — screenshot 1" loading="lazy" data-optional>
