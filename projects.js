@@ -374,6 +374,25 @@
     else if (deck) { e.preventDefault(); go(deck.i + dir); }
   });
 
+  // First screen = heading + strip: on tall screens, the spare height goes ABOVE the
+  // strip so it sits along the bottom edge; filters follow right after on scroll.
+  // Tile size is not touched.
+  var strip = document.querySelector('.strip');
+  function seatStrip() {
+    if (!strip) return;
+    strip.style.marginTop = '';
+    var r = strip.getBoundingClientRect();
+    var bottom = r.bottom + window.scrollY;
+    var spare = window.innerHeight - bottom - 24;
+    if (spare > 0) strip.style.marginTop = (24 + spare) + 'px';
+  }
+  seatStrip();
+  window.addEventListener('load', seatStrip);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(seatStrip);
+  setTimeout(seatStrip, 1000);
+  var seatTimer;
+  window.addEventListener('resize', function () { clearTimeout(seatTimer); seatTimer = setTimeout(seatStrip, 150); });
+
   // deep link: work.html#vaani-proj opens that project
   if (location.hash) {
     var target = document.getElementById(location.hash.slice(1));
