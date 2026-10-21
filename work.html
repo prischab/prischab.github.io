@@ -116,27 +116,28 @@
     from { transform: translateX(-100%); }
     to { transform: translateX(0); }
   }
-  /* each tile keeps its image's real shape; --k only sets its height */
+  /* every tile is the same 16:9 frame; images fit inside on a beige mat, never cropped */
   .tile { display: block; flex-shrink: 0; }
   .tile-media {
     display: block;
-    height: calc(var(--strip-h) * var(--k, 0.6));
+    height: calc(var(--strip-h) * 0.66);
+    aspect-ratio: 16 / 9;
     overflow: hidden;
     background: var(--bg-warm);
   }
   .tile-media img {
-    width: auto;
+    width: 100%;
     height: 100%;
-    max-width: none;
+    object-fit: contain;
     display: block;
-    transition: transform 0.6s ease;
+    transition: opacity 0.3s ease;
   }
   .tile:hover .tile-media img { opacity: 0.85; }
   .tile-type {
     display: flex;
     align-items: flex-end;
     height: 100%;
-    width: calc(var(--strip-h) * 0.62);
+    width: 100%;
     padding: 18px;
     background: var(--ink);
     color: var(--bg);
@@ -199,13 +200,10 @@
   }
   .proj-grid .project:focus-visible { outline: 2px solid var(--ink); outline-offset: 6px; }
   .proj-grid .proj-media { order: 0; }
-  .proj-grid .img-slot { aspect-ratio: auto; border: none; }
-  .proj-grid .img-slot img { height: auto; transition: opacity 0.3s ease; }
-  /* tall screenshots (e.g. phone apps) shrink to fit, centred on a beige mat — never cropped */
-  .proj-grid .img-slot { background: var(--bg-warm); }
-  .proj-grid .img-slot img { width: auto; max-width: 100%; max-height: 380px; }
+  /* every card image is the same 16:9 frame; images fit inside on a beige mat, never cropped */
+  .proj-grid .img-slot { aspect-ratio: 16 / 9; border: none; background: var(--bg-warm); }
+  .proj-grid .img-slot img { width: 100%; height: 100%; object-fit: contain; transition: opacity 0.3s ease; }
   .proj-grid .project:hover .proj-media img { transform: none; opacity: 0.88; }
-  .proj-grid .img-slot:has(> .tile-type) { aspect-ratio: 4 / 3; }
   .proj-grid .img-slot > .tile-type { font-size: clamp(28px, 2.6vw, 40px); padding: 20px; }
   .proj-grid .proj-body { display: flex; flex-direction: column; margin-top: 12px; }
   .proj-grid .proj-num, .proj-grid .project p, .proj-grid .proj-links { display: none; }
@@ -749,6 +747,7 @@
             <img src="assets/internship/emergency-corridor/ui-3.png" alt="AI-Powered Emergency Corridor — screenshot 3" loading="lazy" data-optional>
             <img src="assets/internship/emergency-corridor/ui-4.png" alt="AI-Powered Emergency Corridor — screenshot 4" loading="lazy" data-optional>
             <img src="assets/internship/emergency-corridor/ui-5.png" alt="AI-Powered Emergency Corridor — screenshot 5" loading="lazy" data-optional>
+            <img src="assets/internship/emergency-corridor/ui-6.png" alt="AI-Powered Emergency Corridor — screenshot 6" loading="lazy" data-optional>
           </div>
           <template class="cs">
               <section class="cs-slide">
