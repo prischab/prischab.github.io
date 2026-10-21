@@ -62,11 +62,17 @@
   .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
   .photo-frame { position: relative; overflow: hidden; }
   .photo-frame .img-slot { position: absolute; inset: 0; border: none; }
-  /* photo starts grey and fades to colour once, as the page loads */
-  .photo-frame img { animation: toColour 1.6s ease 0.5s both; transition: transform 0.8s ease; }
-  .photo-frame:hover img { transform: scale(1.02); }
+  /* mouse/trackpad: photo is grey, turns colour on hover */
+  @media (hover: hover) and (pointer: fine) {
+    .photo-frame img { filter: grayscale(1) contrast(1.05); transition: filter 0.6s ease, transform 0.8s ease; }
+    .photo-frame:hover img { filter: grayscale(0) contrast(1); transform: scale(1.02); }
+  }
+  /* phones/tablets have no hover: photo starts grey and fades to colour as the page loads */
+  @media not ((hover: hover) and (pointer: fine)) {
+    .photo-frame img { animation: toColour 1.6s ease 0.5s both; }
+  }
   @keyframes toColour { from { filter: grayscale(1) contrast(1.05); } to { filter: grayscale(0); } }
-  @media (prefers-reduced-motion: reduce) { .photo-frame img { animation: none; } }
+  @media (prefers-reduced-motion: reduce) { .photo-frame img { animation: none; transition: none; } }
   /* full name in solid ink (the site's faded-em accent is skipped here) */
   h1.name em { opacity: 1; }
   @media (max-width: 860px) {

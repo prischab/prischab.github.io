@@ -32,10 +32,6 @@
   }
   .about-grid .lead em { font-style: normal; opacity: 0.45; }
 
-  .about-side { display: flex; flex-direction: column; gap: 32px; }
-  .about-photo { aspect-ratio: 4 / 5; overflow: hidden; background: var(--bg-warm); }
-  .about-photo:not(:has(img)) { display: none; } /* no photo yet: no empty box */
-  .about-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .facts { display: flex; flex-direction: column; border-top: 1px solid var(--ink); }
   .fact {
     display: flex;
@@ -147,11 +143,6 @@
           <p>Right now I'm interning at <a href="experience.html" style="border-bottom:1px solid currentColor">Choice TechLab</a>, where I've worked on things I never expected to touch as a student: a tool that listens to customer calls in Hindi and English, a voice cloning service for Indian languages, the backend for a company productivity app, and a simulation that clears traffic for ambulances in Pune.</p>
           <p>I like writing about what I build, because explaining something simply is the best test of whether I really understand it. I'm graduating in 2027 and looking for roles in AI/ML, data, or software.</p>
         </div>
-        <div class="about-side">
-          <!-- Second photo: drop it in as images/about.jpg. If the file is missing, this box hides itself. -->
-          <div class="about-photo">
-            <img src="images/about.jpg" alt="Prischa Bajeli" loading="lazy" data-optional>
-          </div>
         <div class="facts">
           <div class="fact"><span>Focus</span><span>AI · Data Science · ML · DL</span></div>
           <div class="fact"><span>University</span><span>MIT-WPU, Pune</span></div>
@@ -161,7 +152,6 @@
           <div class="fact"><span>CGPA</span><span>8.23</span></div>
           <div class="fact"><span>Based in</span><span>Pune, India</span></div>
           <div class="fact"><span>Open to</span><span>AI/ML, data &amp; software roles · 2027</span></div>
-        </div>
         </div>
       </div>
 
